@@ -46,22 +46,26 @@ const services = [
 <section class="w-full bg-qwi-bg-main border-t border-white/10 relative overflow-hidden py-24 md:py-32" id="services">
   
   {/* Header Section */}
-  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16 reveal-up">
-    <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10">
-      OUR DIGITAL
-    </h2>
-    <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10">
-      SERVICES
-    </h2>
+  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+    <div class="services-reveal overflow-hidden leading-[0.9] pb-2">
+      <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+        OUR DIGITAL
+      </h2>
+    </div>
+    <div class="services-reveal overflow-hidden leading-[0.9] pb-2">
+      <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+        SERVICES
+      </h2>
+    </div>
   </div>
 
   {/* Services List */}
-  <div class="max-w-5xl mx-auto px-4 md:px-6 reveal-up delay-200">
+  <div class="services-list-container max-w-5xl mx-auto px-4 md:px-6">
     <div class="flex flex-col w-full">
       {services.map((service, index) => (
         <a 
-          href="#contact" 
-          class={`group block border-b border-white/10 ${index === 0 ? 'border-t' : ''} hover:bg-qwi-bg-hover transition-colors duration-300 relative px-4 md:px-6 -mx-4 md:-mx-6`}
+          href={`/services#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+          class={`service-row opacity-0 translate-y-8 group block border-b border-white/10 ${index === 0 ? 'border-t' : ''} hover:bg-[#0d0d0d] transition-colors duration-300 relative px-4 md:px-6 -mx-4 md:-mx-6`}
         >
           <div class="flex flex-col md:flex-row md:items-center py-3 md:py-4 w-full transition-transform duration-300 origin-left group-hover:scale-[0.98]">
             {/* Number */}
@@ -96,3 +100,39 @@ const services = [
   </div>
   
 </section>
+
+<script>
+  // @ts-nocheck
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Reveal Header Texts
+  const titleReveals = document.querySelectorAll('#services .services-reveal > h2');
+  gsap.to(titleReveals, {
+    scrollTrigger: {
+      trigger: '#services',
+      start: 'top 80%',
+    },
+    y: 0,
+    duration: 1.2,
+    stagger: 0.15,
+    ease: 'power4.out'
+  });
+
+  // Fade Up Service Rows Individually
+  const rows = document.querySelectorAll('#services .service-row');
+  rows.forEach((row) => {
+    gsap.to(row, {
+      scrollTrigger: {
+        trigger: row,
+        start: 'top 90%',
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out'
+    });
+  });
+</script>

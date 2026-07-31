@@ -57,14 +57,16 @@ const plans = [
 <section class="w-full bg-qwi-bg-main relative overflow-hidden py-20 md:py-24 border-t border-white/10" id="pricing">
   
   {/* Title Block */}
-  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16 reveal-up">
-    <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tight uppercase">
-      PRICING
-    </h2>
+  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+    <div class="pricing-reveal overflow-hidden leading-[0.9] pb-2">
+      <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tight uppercase translate-y-[120%] inline-block">
+        PRICING
+      </h2>
+    </div>
   </div>
 
   {/* Cards Grid */}
-  <div class="w-[90%] max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-qwi-border-light reveal-up delay-200">
+  <div class="pricing-grid w-[90%] max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-qwi-border-light">
     {plans.map((plan, index) => {
       // Logic for middle highlighted card
       const isHighlighted = plan.isPopular;
@@ -73,7 +75,7 @@ const plans = [
         : "border-qwi-border-light border-b lg:border-b-0 lg:border-r last:border-r-0 last:border-b-0";
 
       return (
-        <div class={`flex flex-col p-6 lg:p-8 ${borderClass} bg-qwi-bg-main group transition-colors duration-300 hover:bg-[#0d0d0d]`}>
+        <div class={`pricing-card opacity-0 translate-y-8 flex flex-col p-6 lg:p-8 ${borderClass} bg-qwi-bg-main group transition-colors duration-300 hover:bg-[#0d0d0d]`}>
           
           {/* Popular Badge */}
           {plan.isPopular && (
@@ -147,4 +149,40 @@ const plans = [
       );
     })}
   </div>
+  
 </section>
+
+<script>
+  // @ts-nocheck
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Reveal Header Texts
+  const titleReveals = document.querySelectorAll('#pricing .pricing-reveal > h2');
+  gsap.to(titleReveals, {
+    scrollTrigger: {
+      trigger: '#pricing',
+      start: 'top 80%',
+    },
+    y: 0,
+    duration: 1.2,
+    stagger: 0.15,
+    ease: 'power4.out'
+  });
+
+  // Fade Up Cards
+  const cards = document.querySelectorAll('#pricing .pricing-card');
+  gsap.to(cards, {
+    scrollTrigger: {
+      trigger: '.pricing-grid',
+      start: 'top 85%',
+    },
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    stagger: 0.15,
+    ease: 'power3.out'
+  });
+</script>
