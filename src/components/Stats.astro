@@ -8,7 +8,7 @@ const stats = [
 ---
 
 <section class="w-full bg-accent-red py-6 md:py-8 relative z-20">
-  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-16 text-center" id="stats-container">
+  <div class="max-w-6xl mx-auto px-2 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-2 md:gap-16 text-center" id="stats-container">
     {stats.map((stat) => (
       <div class="flex flex-col items-center justify-center space-y-6">
         <h2 
@@ -17,7 +17,7 @@ const stats = [
         >
           0
         </h2>
-        <p class="text-text-brown font-space-mono text-[13px] md:text-[15px] tracking-[0.1em] font-bold">
+        <p class="text-text-brown font-space-mono text-[11px] sm:text-[13px] md:text-[15px] tracking-[0.05em] md:tracking-[0.1em] font-bold whitespace-nowrap md:whitespace-normal">
           {stat.label}
         </p>
       </div>

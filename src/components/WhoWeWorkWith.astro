@@ -37,9 +37,9 @@ const audiences = [
   {/* Cards Grid */}
   <div class="www-grid w-[90%] max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
     {audiences.map((audience, index) => {
-      let overlayClass = "translate-y-full group-hover:translate-y-0"; // default for center
-      if (index === 0) overlayClass = "-translate-x-full group-hover:translate-x-0"; // left card
-      if (index === 2) overlayClass = "translate-x-full group-hover:translate-x-0"; // right card
+      let overlayClass = "translate-y-[105%] group-hover:translate-y-0"; // default for center
+      if (index === 0) overlayClass = "-translate-x-[105%] group-hover:translate-x-0"; // left card
+      if (index === 2) overlayClass = "translate-x-[105%] group-hover:translate-x-0"; // right card
 
       return (
       <div class="www-card opacity-0 group relative border border-qwi-border-light p-6 lg:p-8 min-h-[200px] lg:min-h-[240px] flex flex-col items-start transition-all duration-300 hover:border-accent-red overflow-hidden cursor-pointer">
