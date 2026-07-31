@@ -5,13 +5,13 @@ import Marquee from './Marquee.astro';
   <Marquee />
   
   <footer
-    class="w-full bg-qwi-bg-main relative overflow-hidden min-h-[90vh] flex flex-col justify-start pt-20 md:pt-24 pb-12"
+    class="w-full bg-qwi-bg-main relative overflow-hidden min-h-[50vh] md:min-h-[90vh] flex flex-col justify-start pt-20 md:pt-24 pb-6 md:pb-12"
     id="contact"
   >
     {/* Dark red background glow (Fixed in center) */}
     <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
       <div
-        class="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-accent-red/15 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2"
+        class="absolute top-1/2 left-1/2 w-[400px] h-[400px] md:w-[800px] md:h-[800px] bg-accent-red/15 rounded-full blur-[100px] md:blur-[140px] -translate-x-1/2 -translate-y-1/2"
       >
       </div>
     </div>
