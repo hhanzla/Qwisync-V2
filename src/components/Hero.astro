@@ -83,19 +83,19 @@ import ScrambleButton from './ui/ScrambleButton.astro';
 
     {/* CTA Buttons */}
     <div
-      class="hero-reveal overflow-hidden flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4"
+      class="hero-reveal w-full max-w-sm sm:max-w-none overflow-hidden flex flex-col sm:flex-row items-center sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4"
     >
-      <div class="translate-y-full inline-block">
+      <div class="translate-y-full w-full sm:w-auto inline-block">
         <a
           href="/portfolio"
-          class="hover-scramble inline-block px-7 py-3 bg-accent-red text-white font-space-mono text-[11px] tracking-[0.15em] font-bold uppercase hover:bg-white hover:text-black transition-colors duration-300"
+          class="hover-scramble inline-block w-full text-center px-7 py-3 bg-accent-red text-white font-space-mono text-[11px] tracking-[0.15em] font-bold uppercase hover:bg-white hover:text-black transition-colors duration-300"
           data-text="SEE OUR WORK"
         >
           <span class="scramble-text pointer-events-none">SEE OUR WORK</span>
         </a>
       </div>
-      <div class="translate-y-full inline-block">
-        <ScrambleButton href="/contact" text="BOOK A CALL ->" className="px-7 py-3 font-bold" />
+      <div class="translate-y-full w-full sm:w-auto inline-block">
+        <ScrambleButton href="/contact" text="BOOK A CALL ->" className="w-full text-center px-7 py-3 font-bold" />
       </div>
     </div>
   </div>

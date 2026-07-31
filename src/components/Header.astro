@@ -35,9 +35,9 @@ import { Globe, Plus } from 'lucide-react';
       
       {/* Language Toggle */}
       <div class="flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[9px] uppercase">
-        <a href="#" class="px-4 py-2.5 text-gray-500 hover:text-white hover:bg-white/5 transition-colors">AR</a>
+        <a href="#" class="px-4 py-2.5 text-gray-500 hover:text-white hover:bg-white/5 transition-colors">URDU</a>
         <div class="w-[1px] h-4 bg-white/10"></div>
-        <a href="#" class="px-4 py-2.5 text-accent-red bg-white/5">EN</a>
+        <a href="#" class="px-4 py-2.5 text-accent-red bg-white/5">ENG</a>
       </div>
       
       {/* CTA Button */}
@@ -49,16 +49,57 @@ import { Globe, Plus } from 'lucide-react';
     </div>
 
     {/* Mobile Toggle */}
-    <button class="lg:hidden text-white flex flex-col space-y-1.5 p-2 focus:outline-none group">
-      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-colors"></span>
-      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-colors"></span>
+    <button id="mobile-menu-toggle" class="lg:hidden text-white flex flex-col space-y-1.5 p-2 focus:outline-none group z-50">
+      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"></span>
+      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"></span>
+      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"></span>
     </button>
   </div>
 </header>
 
-<script>
-  import gsap from 'gsap';
+  {/* Fullscreen Mobile Menu */}
+  <div id="mobile-menu" class="fixed inset-0 bg-qwi-bg-main z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500 pt-20">
+    <nav class="flex flex-col items-center space-y-6">
+      {[
+        { name: 'Home', id: 'hero' },
+        { name: 'Work', id: 'selected-work' },
+        { name: 'About', id: 'who-we-work-with' },
+        { name: 'Services', id: 'services' },
+        { name: 'Pricing', id: 'pricing' },
+        { name: 'Contact', id: 'contact' }
+      ].map((item) => (
+        <a 
+          href={`#${item.id}`} 
+          class="mobile-nav-link mobile-anim-item opacity-0 text-qwi-text-heading font-jetbrains-mono font-bold text-3xl uppercase tracking-tighter hover:text-accent-red transition-colors"
+        >
+          {item.name}
+        </a>
+      ))}
+    </nav>
+    
+    <div class="mt-16 flex flex-col items-center space-y-4">
+      {/* Language Toggle */}
+      <div class="mobile-anim-item opacity-0 flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[10px] uppercase">
+        <a href="#" class="px-4 py-2 text-gray-500 hover:text-white hover:bg-white/5 transition-colors">URDU</a>
+        <div class="w-[1px] h-4 bg-white/10"></div>
+        <a href="#" class="px-4 py-2 text-accent-red bg-white/5">ENG</a>
+      </div>
+      
+      {/* Email */}
+      <a href="mailto:hello@qwisync.com" class="mobile-anim-item opacity-0 text-accent-red font-space-mono text-xs hover:text-white transition-colors">
+        hello@qwisync.com
+      </a>
 
+      {/* Locations */}
+      <div class="mobile-anim-item opacity-0 text-qwi-text-desc font-space-mono text-[10px] tracking-widest uppercase">
+        PAK , US
+      </div>
+    </div>
+  </div>
+
+<script>
+  // @ts-nocheck
+  import gsap from 'gsap';
   // GSAP Entrance Animation
   gsap.to('#v2-header', {
     y: 0,
@@ -67,4 +108,52 @@ import { Globe, Plus } from 'lucide-react';
     ease: 'power3.out',
     delay: 0.2
   });
+
+  // Mobile Menu Logic
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  let isMenuOpen = false;
+
+  if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      
+      const spans = mobileToggle.querySelectorAll('span');
+
+      if (isMenuOpen) {
+        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+        mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+        
+        spans[0].style.transform = 'translateY(8px) rotate(45deg)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+        
+        // Stagger in the menu items
+        gsap.fromTo('.mobile-anim-item', 
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out', delay: 0.2 }
+        );
+
+        if (('lenis' in window)) window['lenis'].stop();
+      } else {
+        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+        
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+        
+        if (('lenis' in window)) window['lenis'].start();
+      }
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isMenuOpen) {
+          mobileToggle.click();
+        }
+      });
+    });
+  }
 </script>

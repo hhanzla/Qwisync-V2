@@ -17,14 +17,11 @@ const { href, text, className = "" } = Astro.props;
 </a>
 
 <script>
+  // @ts-nocheck
   const chars = '!<>-_\\/[]{}—=+*^?#________';
   
   class ScrambleText {
-    el: HTMLElement;
-    originalText: string;
-    interval: any;
-
-    constructor(el: HTMLElement) {
+    constructor(el) {
       this.el = el;
       this.originalText = el.getAttribute('data-text') || '';
       
@@ -38,7 +35,7 @@ const { href, text, className = "" } = Astro.props;
       let iterations = 0;
       
       this.interval = setInterval(() => {
-        this.el.querySelector('.scramble-text')!.textContent = this.originalText
+        this.el.querySelector('.scramble-text').textContent = this.originalText
           .split('')
           .map((char, index) => {
             if (index < iterations) {
@@ -58,12 +55,12 @@ const { href, text, className = "" } = Astro.props;
 
     resolve() {
       clearInterval(this.interval);
-      this.el.querySelector('.scramble-text')!.textContent = this.originalText;
+      this.el.querySelector('.scramble-text').textContent = this.originalText;
     }
   }
 
   // Initialize on all scramble elements
   document.querySelectorAll('.hover-scramble').forEach(btn => {
-    new ScrambleText(btn as HTMLElement);
+    new ScrambleText(btn);
   });
 </script>

@@ -57,14 +57,14 @@ const plans = [
 <section class="w-full bg-qwi-bg-main relative overflow-hidden py-20 md:py-24 border-t border-white/10" id="pricing">
   
   {/* Title Block */}
-  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16 reveal-up">
     <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tight uppercase">
       PRICING
     </h2>
   </div>
 
   {/* Cards Grid */}
-  <div class="w-[90%] max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-qwi-border-light">
+  <div class="w-[90%] max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-qwi-border-light reveal-up delay-200">
     {plans.map((plan, index) => {
       // Logic for middle highlighted card
       const isHighlighted = plan.isPopular;

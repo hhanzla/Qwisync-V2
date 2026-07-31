@@ -13,10 +13,9 @@ const { title = 'Qwisync' } = Astro.props;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-		<link rel="shortcut icon" href="/images/favicon.ico" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
 		<link rel="manifest" href="/images/site.webmanifest" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
@@ -37,6 +36,7 @@ const { title = 'Qwisync' } = Astro.props;
 		<slot />
 		
 		<script>
+			// @ts-nocheck
 			import Lenis from 'lenis';
 
 			const lenis = new Lenis({
@@ -45,7 +45,7 @@ const { title = 'Qwisync' } = Astro.props;
 				smoothWheel: true,
 			});
 
-			function raf(time: number) {
+			function raf(time) {
 				lenis.raf(time);
 				requestAnimationFrame(raf);
 			}
@@ -53,7 +53,7 @@ const { title = 'Qwisync' } = Astro.props;
 			requestAnimationFrame(raf);
 
 			// Expose lenis globally so other scripts can use scrollTo
-			(window as any).lenis = lenis;
+			window['lenis'] = lenis;
 			
 			// Smooth scroll for anchor links using Lenis
 			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -61,7 +61,7 @@ const { title = 'Qwisync' } = Astro.props;
 					e.preventDefault();
 					const targetId = anchor.getAttribute('href');
 					if (!targetId || targetId === '#') return;
-					const targetElement = document.querySelector(targetId) as HTMLElement;
+					const targetElement = document.querySelector(targetId);
 					if (targetElement) {
 						lenis.scrollTo(targetElement, { duration: 1.5, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
 					}
@@ -97,7 +97,7 @@ const { title = 'Qwisync' } = Astro.props;
 					
 					// Remove the clip-path after animation so it doesn't cut off dropdown menus
 					setTimeout(() => {
-						(el as HTMLElement).style.clipPath = 'none';
+						el.style.clipPath = 'none';
 					}, 1300); // slightly longer than the 1.2s CSS transition
 				});
 			});
@@ -148,11 +148,12 @@ const { title = 'Qwisync' } = Astro.props;
 		</div>
 
 		<script>
+			// @ts-nocheck
 			const cursor = document.getElementById('custom-cursor');
 			if (cursor) {
 				// Show cursor on first mouse move
 				document.addEventListener('mousemove', (e) => {
-					if ((e.target as HTMLElement).closest('header')) {
+					if (e.target.closest('header')) {
 						cursor.style.opacity = '0';
 					} else {
 						cursor.style.opacity = '1';

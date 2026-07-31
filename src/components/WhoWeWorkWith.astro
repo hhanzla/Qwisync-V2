@@ -20,8 +20,8 @@ const audiences = [
 
 <section class="w-full bg-qwi-bg-main border-t border-white/10 relative overflow-hidden py-24 md:py-32" id="who-we-work-with">
   
-  {/* Title Block */}
-  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+  {/* Header Section */}
+  <div class="flex flex-col items-center justify-center text-center mb-16 md:mb-24 reveal-up">
     <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tight uppercase">
       WHO WE
     </h2>
@@ -31,7 +31,7 @@ const audiences = [
   </div>
 
   {/* Cards Grid */}
-  <div class="w-[90%] max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+  <div class="w-[90%] max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6 reveal-up delay-200">
     {audiences.map((audience, index) => {
       let overlayClass = "translate-y-full group-hover:translate-y-0"; // default for center
       if (index === 0) overlayClass = "-translate-x-full group-hover:translate-x-0"; // left card
