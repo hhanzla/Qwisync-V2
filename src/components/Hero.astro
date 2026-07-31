@@ -1,0 +1,205 @@
+---
+import ScrambleButton from './ui/ScrambleButton.astro';
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-12 md:pt-16 pb-16"
+>
+  {/* Dark red background glow */}
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div
+      id="cursor-glow"
+      class="absolute top-0 left-0 w-[600px] h-[600px] bg-accent-red/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+  </div>
+
+  {/* Background Vertical Lines */}
+  <div
+    class="absolute inset-0 z-0 flex justify-between w-[95vw] md:w-[90vw] max-w-[1920px] mx-auto pointer-events-none overflow-hidden opacity-40"
+  >
+    {
+      [1.2, 3.5, 0.8, 4.1, 2.5].map((delay) => (
+        <div class="relative w-[1px] h-full bg-white/5">
+          <div
+            class="absolute left-[-1px] w-[3px] h-[30vh] bg-gradient-to-b from-transparent via-accent-red to-transparent blur-[2px] light-strip"
+            style={`animation-delay: ${delay}s;`}
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  <div
+    class="relative z-10 text-center px-6 max-w-6xl mx-auto flex flex-col items-center"
+  >
+    {/* Subtitle */}
+    <div class="hero-reveal overflow-hidden mb-6">
+      <div class="translate-y-full inline-block">
+        <div class="border border-accent-red/20 bg-accent-red/10 backdrop-blur-md px-4 py-1.5">
+          <h3
+            class="hover-scramble text-accent-red font-space-mono text-[9px] md:text-[10px] tracking-[0.25em] uppercase font-bold cursor-default"
+            data-text="Digital Agency - Pakistan & US"
+          >
+            <span class="scramble-text pointer-events-none">Digital Agency - Pakistan & US</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    {/* Main Headline */}
+    <div class="hero-reveal overflow-hidden leading-[0.8] mb-1">
+      <h1
+        class="text-[10vw] md:text-[75px] lg:text-[90px] tracking-[-0.05em] font-jetbrains-mono font-bold text-[#EFEBE3] translate-y-[120%] inline-block uppercase whitespace-nowrap"
+      >
+        Get Found First
+      </h1>
+    </div>
+    <div class="hero-reveal overflow-hidden leading-[0.8] mb-1">
+      <h1
+        class="text-[10vw] md:text-[75px] lg:text-[90px] tracking-[-0.05em] font-jetbrains-mono font-bold text-[#EFEBE3] translate-y-[120%] inline-block uppercase whitespace-nowrap"
+      >
+        on Google Search
+      </h1>
+    </div>
+    <div class="hero-reveal overflow-hidden leading-[0.8]">
+      <h1
+        class="text-[10vw] md:text-[75px] lg:text-[90px] tracking-[-0.05em] font-jetbrains-mono font-bold text-accent-red translate-y-[120%] inline-block uppercase whitespace-nowrap"
+      >
+        & Maps
+      </h1>
+    </div>
+
+    {/* Description */}
+    <div class="hero-reveal overflow-hidden mt-6 mb-4 max-w-xl">
+      <p
+        class="font-space-mono text-qwi-text-body text-[12px] md:text-[14px] leading-[1.8] translate-y-full inline-block"
+      >
+        Web design, SEO, branding, and digital marketing<br />
+        for businesses that need clearer growth online.
+      </p>
+    </div>
+
+    {/* CTA Buttons */}
+    <div
+      class="hero-reveal overflow-hidden flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4"
+    >
+      <div class="translate-y-full inline-block">
+        <a
+          href="/portfolio"
+          class="hover-scramble inline-block px-7 py-3 bg-accent-red text-white font-space-mono text-[11px] tracking-[0.15em] font-bold uppercase hover:bg-white hover:text-black transition-colors duration-300"
+          data-text="SEE OUR WORK"
+        >
+          <span class="scramble-text pointer-events-none">SEE OUR WORK</span>
+        </a>
+      </div>
+      <div class="translate-y-full inline-block">
+        <ScrambleButton href="/contact" text="BOOK A CALL ->" className="px-7 py-3 font-bold" />
+      </div>
+    </div>
+  </div>
+
+  {/* Marquee Ticker */}
+  <div
+    class="absolute bottom-0 left-0 w-full border-t border-white/10 bg-qwi-bg-main py-2 overflow-hidden z-20"
+  >
+    <div
+      class="flex whitespace-nowrap font-space-mono text-[9px] tracking-[0.2em] uppercase text-gray-500 marquee-container"
+    >
+      {/* Repeated content for seamless marquee */}
+      <div class="marquee-content flex items-center shrink-0">
+        <span class="mx-6 text-accent-red font-bold">SCROLL DOWN</span>+
+        <span class="mx-6">WEB DEVELOPMENT</span>+
+        <span class="mx-6">MOBILE APPS</span>+
+        <span class="mx-6">AZ SOLUTIONS</span>+
+        <span class="mx-6">BRAND IDENTITY</span>+
+        <span class="mx-6">UI/UX DESIGN</span>+
+        <span class="mx-6">CRYPTO</span>+
+        <span class="mx-6">SAAS</span>+
+        <span class="mx-6">E-COMMERCE</span>+
+      </div>
+      <div class="marquee-content flex items-center shrink-0">
+        <span class="mx-6 text-accent-red font-bold">SCROLL DOWN</span>+
+        <span class="mx-6">WEB DEVELOPMENT</span>+
+        <span class="mx-6">MOBILE APPS</span>+
+        <span class="mx-6">AZ SOLUTIONS</span>+
+        <span class="mx-6">BRAND IDENTITY</span>+
+        <span class="mx-6">UI/UX DESIGN</span>+
+        <span class="mx-6">CRYPTO</span>+
+        <span class="mx-6">SAAS</span>+
+        <span class="mx-6">E-COMMERCE</span>+
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-content {
+    animation: marquee 25s linear infinite;
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  /* Vertical Light Strips */
+  .light-strip {
+    animation: strip-light 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    top: -40vh;
+  }
+  @keyframes strip-light {
+    0% {
+      top: -40vh;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 120vh;
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+
+  // Text Reveal Sequence
+  const reveals = document.querySelectorAll(".hero-reveal > *");
+
+  gsap.to(reveals, {
+    y: 0,
+    duration: 1.2,
+    stagger: 0.15,
+    ease: "power4.out",
+    delay: 0.5,
+  });
+
+  // Cursor glow effect
+  const cursorGlow = document.getElementById("cursor-glow");
+  if (cursorGlow) {
+    // Initial center position
+    gsap.set(cursorGlow, {
+      x: window.innerWidth / 2,
+      y: window.innerHeight / 2,
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      gsap.to(cursorGlow, {
+        x: e.clientX,
+        y: e.clientY,
+        duration: 1,
+        ease: "power3.out",
+      });
+    });
+  }
+</script>

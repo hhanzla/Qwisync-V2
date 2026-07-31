@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Stats from '../components/Stats.astro';
+import SelectedWork from '../components/SelectedWork.astro';
+import WhoWeWorkWith from '../components/WhoWeWorkWith.astro';
+import DigitalServices from '../components/DigitalServices.astro';
+import Pricing from '../components/Pricing.astro';
+import Footer from '../components/Footer.astro';
+
+// JSON-LD Schema for the homepage
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Qwisync",
+  "url": "https://www.qwisync.com",
+  "logo": "https://www.qwisync.com/qwisync-logo.png",
+  "description": "Qwisync is a premier software development company specializing in web development, mobile apps, UI/UX design, game development, digital marketing, and custom software solutions.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Lahore",
+    "addressLocality": "Lahore",
+    "addressCountry": "Pakistan"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+92 3484559054",
+    "contactType": "Customer Service",
+    "email": "business@qwisync.com",
+    "availableLanguage": "English"
+  },
+  "sameAs": [
+    "https://www.facebook.com/qwisync",
+    "https://www.instagram.com/qwisync",
+    "https://www.linkedin.com/company/qwisync"
+  ],
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://www.qwisync.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+};
+---
+
+<Layout>
+  <div class="relative">
+    {/* Add JSON-LD to document head */}
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    
+    <main>
+      <Hero />
+      <Stats />
+      <SelectedWork />
+      <WhoWeWorkWith />
+      <DigitalServices />
+      <Pricing />
+      <Footer />
+    </main>
+  </div>
+</Layout>

@@ -1,0 +1,180 @@
+---
+const projects = [
+  {
+    num: "01",
+    title: "MWT - SOLAR ENGINEERING",
+    desc: "Solar power systems built for real operating conditions. MWT Group studies, supplies, installs, commissions, and maintains renewable power systems for factories, homes, farms, wells, lighting, and grid-connected stations.",
+    image: "https://k3studios.ae/wp-content/uploads/2026/05/Solar-power-systems-built-for-real-operating-conditions-MWT-Group-05-09-2026_09_35_PM-1024x587.png"
+  },
+  {
+    num: "02",
+    title: "Domo Mark",
+    desc: "DomoMark is a focused Dubai property advisory platform built for buyers and investors who need clarity, not clutter. We designed an end-to-end experience that turns scattered launches, price lists, and handover dates into a short, actionable brief – from discovery to closing, every touchpoint builds confidence.",
+    image: "https://k3studios.ae/wp-content/uploads/2026/05/image-75-1024x691.png"
+  },
+  {
+    num: "03",
+    title: "TARS Protocol",
+    desc: "The leading AI architecture protocol on Solana - deploy and tokenize AI agents, discover and trade top AI tokens, and unlock decentralized AI innovation.",
+    image: "https://k3studios.ae/wp-content/uploads/2026/03/home-section1-1024x586.png"
+  },
+  {
+    num: "04",
+    title: "Tars Sona",
+    desc: "Mobile-first AI agent for Solana - enabling seamless token swaps, meeting scheduling, and cross-chain transactions from one interface.",
+    image: "https://k3studios.ae/wp-content/uploads/2026/03/Sona-03-18-2026_05_15_PM-1024x517.png"
+  }
+];
+---
+
+<section class="w-full bg-qwi-bg-main border-t border-white/10 relative overflow-hidden pb-24 md:pb-32 group/section" id="selected-work">
+  
+  {/* Header Section */}
+  <div class="py-20 md:py-32 flex justify-center items-center relative">
+    <h2 class="gsap-fade-title text-qwi-text-heading font-jetbrains-mono font-bold text-[12vw] md:text-[100px] leading-[0.85] tracking-tighter uppercase relative z-10 text-center">
+      SELECTED <br class="md:hidden"/> WORK
+    </h2>
+    {/* Giant hollow background text */}
+    <div class="gsap-fade-bg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-20">
+      <h2 class="text-[30vw] md:text-[300px] font-jetbrains-mono font-bold tracking-tighter uppercase text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.3)]">
+        WORK
+      </h2>
+    </div>
+  </div>
+
+  {/* Projects Grid */}
+  <div class="flex flex-col w-[90%] max-w-[1200px] mx-auto border-x border-t border-white/10">
+    {projects.map((project, index) => {
+      const isEven = index % 2 === 0;
+
+      return (
+        <div class="gsap-project-row grid grid-cols-1 md:grid-cols-2 border-b border-white/10 min-h-[380px] overflow-hidden">
+          
+          {/* Image Block Wrapper for overflow clipping */}
+          <div class={`w-full h-full min-h-[250px] md:min-h-full overflow-hidden ${!isEven ? 'md:order-last' : ''}`}>
+            <div class="gsap-slide-element relative w-full h-full bg-qwi-bg-surface border-r border-white/10 group cursor-pointer overflow-hidden" data-side={isEven ? "left" : "right"}>
+              <img 
+                src={project.image}
+                alt={project.title}
+                class="absolute inset-0 w-full h-full object-cover"
+                loading="lazy"
+              />
+              
+              <div class="absolute inset-0 bg-accent-red/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+
+          {/* Content Block Wrapper for overflow clipping */}
+          <div class="w-full h-full overflow-hidden">
+            <div class="gsap-slide-element flex flex-col justify-center h-full py-10 px-8 md:py-12 md:px-16 relative bg-qwi-bg-main group/content" data-side={isEven ? "right" : "left"}>
+              
+              {/* Number */}
+              <div class="overflow-hidden mb-8">
+                <span class="block text-accent-red font-space-mono text-[12px] font-bold tracking-widest">
+                  {project.num}
+                </span>
+              </div>
+              
+              {/* Title */}
+              <div class="overflow-hidden mb-5">
+                <h4 class="hover-scramble cursor-default w-fit text-qwi-text-heading font-jetbrains-mono font-bold text-[24px] md:text-[28px] tracking-tight hover:text-accent-red transition-colors duration-300 block" data-text={project.title}>
+                  <span class="scramble-text pointer-events-none">{project.title}</span>
+                </h4>
+              </div>
+              
+              {/* Description */}
+              <div class="overflow-hidden mb-8 max-w-lg">
+                <p class="text-qwi-text-desc font-space-mono text-[12px] md:text-[13px] leading-relaxed block">
+                  {project.desc}
+                </p>
+              </div>
+              
+              {/* CTA */}
+              <div class="overflow-hidden">
+                <div class="block">
+                  <a href="#" class="hover-scramble inline-flex items-center space-x-2 text-accent-red font-space-mono text-[11px] tracking-[0.2em] font-bold uppercase hover:text-white transition-colors duration-300" data-text="VIEW CASE STUDY">
+                    <span class="scramble-text pointer-events-none">VIEW CASE STUDY</span>
+                    <span class="text-lg leading-none pointer-events-none">+</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate the main titles
+  gsap.from('.gsap-fade-title', {
+    scrollTrigger: {
+      trigger: '#selected-work',
+      start: 'top 80%',
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: 'power3.out'
+  });
+
+  gsap.from('.gsap-fade-bg', {
+    scrollTrigger: {
+      trigger: '#selected-work',
+      start: 'top 80%',
+    },
+    opacity: 0,
+    duration: 1.5,
+    delay: 0.5,
+    ease: 'power2.out'
+  });
+
+  // Animate each project row
+  const projectRows = document.querySelectorAll('.gsap-project-row');
+  
+  projectRows.forEach((row) => {
+    const slideElements = row.querySelectorAll('.gsap-slide-element');
+    
+    // Setup a timeline for the row
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: row,
+        start: 'top 75%', 
+      }
+    });
+
+    // We only want the horizontal slide on desktop. On mobile, we fade up.
+    let mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
+      // Desktop: Slide out from center line
+      slideElements.forEach((el) => {
+        const side = el.getAttribute('data-side');
+        // If it's on the left, start it at 100% (hidden under the right column)
+        // If it's on the right, start it at -100% (hidden under the left column)
+        const startX = side === 'left' ? 100 : -100;
+        
+        tl.fromTo(el, 
+          { xPercent: startX },
+          { xPercent: 0, duration: 2.2, ease: "power4.out" },
+          0 // Both columns slide out at the exact same time
+        );
+      });
+    });
+
+    mm.add("(max-width: 767px)", () => {
+      // Mobile: Simple fade up
+      tl.fromTo(slideElements, 
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: "power3.out" }
+      );
+    });
+  });
+</script>

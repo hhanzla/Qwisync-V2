@@ -1,0 +1,63 @@
+---
+const audiences = [
+  {
+    num: "01",
+    title: "Startups",
+    desc: "Launch faster with a website, brand, and search strategy built for your buyers, investors, and early customers."
+  },
+  {
+    num: "02",
+    title: "Product & Tech Teams",
+    desc: "Add senior design, development, and SEO support without slowing your roadmap or bloating your internal team."
+  },
+  {
+    num: "03",
+    title: "Nonprofits & Organizations",
+    desc: "Build trust with clear messaging, fast pages, bilingual readiness, and practical content your audience can act on."
+  }
+];
+---
+
+<section class="w-full bg-qwi-bg-main border-t border-white/10 relative overflow-hidden py-24 md:py-32" id="who-we-work-with">
+  
+  {/* Title Block */}
+  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+    <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tight uppercase">
+      WHO WE
+    </h2>
+    <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tight uppercase">
+      WORK WITH
+    </h2>
+  </div>
+
+  {/* Cards Grid */}
+  <div class="w-[90%] max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+    {audiences.map((audience, index) => {
+      let overlayClass = "translate-y-full group-hover:translate-y-0"; // default for center
+      if (index === 0) overlayClass = "-translate-x-full group-hover:translate-x-0"; // left card
+      if (index === 2) overlayClass = "translate-x-full group-hover:translate-x-0"; // right card
+
+      return (
+      <div class="group relative border border-qwi-border-light p-6 lg:p-8 min-h-[200px] lg:min-h-[240px] flex flex-col items-start transition-all duration-300 hover:border-accent-red overflow-hidden cursor-pointer">
+        
+        {/* Hover Overlay Background */}
+        <div class={`absolute inset-0 bg-accent-red ${overlayClass} transition-transform duration-500 ease-out z-0 pointer-events-none`}></div>
+
+        {/* Content Container (Needs to be above the overlay) */}
+        <div class="relative z-10 flex flex-col h-full w-full">
+          <span class="text-accent-red group-hover:text-black font-jetbrains-mono text-[10px] font-bold tracking-widest mb-6 transition-colors duration-300">
+            {audience.num}
+          </span>
+          <h3 class="text-qwi-text-heading group-hover:text-black font-jetbrains-mono text-[18px] lg:text-[15px] xl:text-[18px] tracking-tight font-bold mb-3 transition-colors duration-300 lg:whitespace-nowrap">
+            {audience.title}
+          </h3>
+          <p class="text-qwi-text-desc group-hover:text-qwi-text-dark font-space-mono text-[11px] xl:text-[12px] leading-[1.6] transition-colors duration-300 max-w-[100%]">
+            {audience.desc}
+          </p>
+        </div>
+
+      </div>
+    );
+  })}
+  </div>
+</section>

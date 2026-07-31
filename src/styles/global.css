@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+@theme {
+  /* =========================================
+     QWISYNC BRAND COLORS (EASY TO UNDERSTAND)
+     ========================================= */
+  
+  /* Main Backgrounds */
+  --color-qwi-bg-main: #0a0a0a;       /* The deep black background everywhere */
+  --color-qwi-bg-card: #141414;       /* Slightly lighter black for cards/buttons */
+  --color-qwi-bg-hover: #1a0f0a;      /* The dark brownish/red hover background on services */
+  
+  /* Brand Accents */
+  --color-qwi-orange: #ed5724;        /* Our main signature orange color */
+  --color-accent-red: #ed5724;        /* Legacy alias for qwi-orange */
+  
+  /* Text Colors */
+  --color-qwi-text-heading: #EEEAE2;  /* The warm off-white for massive headings */
+  --color-qwi-text-body: #80756E;     /* The warm grey for the hero description & menu */
+  --color-qwi-text-desc: #7C7467;     /* The earthy grey for project & service descriptions */
+  --color-qwi-text-dark: #2a1005;     /* The dark text color used on hover states */
+  
+  /* Borders */
+  --color-qwi-border-light: #1f1f1f;  /* Subtle borders for cards */
+
+
+
+  /* Spacing */
+  --spacing-space-1: 4px;
+  --spacing-space-2: 6px;
+  --spacing-space-3: 8px;
+  --spacing-space-4: 12px;
+  --spacing-space-5: 16px;
+  --spacing-space-6: 24px;
+  --spacing-space-7: 32px;
+  --spacing-space-8: 40px;
+  --spacing-space-9: 48px;
+  --spacing-space-10: 64px;
+  --spacing-space-11: 80px;
+  --spacing-space-12: 94px;
+  --spacing-space-13: 96px;
+
+  /* Fonts */
+  --font-figtree: "Figtree", sans-serif;
+  --font-jetbrains-mono: "JetBrains Mono", monospace;
+  --font-space-mono: "Space Mono", monospace;
+}
+
+/* Base Body Styles */
+html, body {
+  background-color: #0a0a0a;
+  color: #f0ece4;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Hide native cursor globally to use custom JS cursor */
+* {
+  cursor: none !important;
+}
+
+/* Restore native cursor on header */
+header, header * {
+  cursor: auto !important;
+}
+header a, header button, header .nav-link, header .hover-scramble {
+  cursor: pointer !important;
+}
+
+/* Film Grain Texture */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}

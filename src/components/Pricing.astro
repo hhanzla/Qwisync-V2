@@ -1,0 +1,150 @@
+---
+import ScrambleButton from './ui/ScrambleButton.astro';
+
+const plans = [
+  {
+    title: "Monthly Subscription",
+    pricePrefix: "Starts from",
+    price: "200",
+    priceSuffix: "USD/mo",
+    desc: "Ongoing web, SEO, content, and design support for teams that need steady improvements every month.",
+    features: [
+      "Unlimited design & dev requests",
+      "2-4 business day turnaround",
+      "Unlimited revisions",
+      "Pause or cancel anytime"
+    ],
+    buttonText: "GET STARTED",
+    buttonType: "primary",
+    isPopular: false
+  },
+  {
+    title: "Fixed Price",
+    pricePrefix: "Starts from",
+    price: "2,000",
+    priceSuffix: "USD+",
+    desc: "A clear scope, timeline, and launch plan for websites, SEO pages, brand systems, or campaign builds.",
+    features: [
+      "Custom scope assessment",
+      "Web, mobile, or design projects",
+      "Fixed timeline & deliverables",
+      "Unlimited revisions included",
+      "Post-launch support"
+    ],
+    buttonText: "GET STARTED",
+    buttonType: "primary",
+    isPopular: true
+  },
+  {
+    title: "Custom Enterprise",
+    pricePrefix: "",
+    price: "Let's\nDiscuss",
+    priceSuffix: "",
+    desc: "Custom digital growth programs for larger websites, multilingual SEO, ecommerce, and platform builds.",
+    features: [
+      "Dedicated development teams",
+      "Web, mobile, AI & blockchain",
+      "SaaS & E-commerce platforms",
+      "Priority & ongoing support"
+    ],
+    buttonText: "LET'S DISCUSS",
+    buttonType: "outline",
+    isPopular: false
+  }
+];
+---
+
+<section class="w-full bg-qwi-bg-main relative overflow-hidden py-20 md:py-24 border-t border-white/10" id="pricing">
+  
+  {/* Title Block */}
+  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+    <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tight uppercase">
+      PRICING
+    </h2>
+  </div>
+
+  {/* Cards Grid */}
+  <div class="w-[90%] max-w-[1000px] mx-auto grid grid-cols-1 lg:grid-cols-3 gap-0 border border-qwi-border-light">
+    {plans.map((plan, index) => {
+      // Logic for middle highlighted card
+      const isHighlighted = plan.isPopular;
+      const borderClass = isHighlighted 
+        ? "border border-accent-red lg:-my-[1px] lg:-mx-[1px] relative z-20" // Add 'border' thickness so color shows
+        : "border-qwi-border-light border-b lg:border-b-0 lg:border-r last:border-r-0 last:border-b-0";
+
+      return (
+        <div class={`flex flex-col p-6 lg:p-8 ${borderClass} bg-qwi-bg-main group transition-colors duration-300 hover:bg-[#0d0d0d]`}>
+          
+          {/* Popular Badge */}
+          {plan.isPopular && (
+            <div class="absolute top-0 right-0 bg-accent-red text-white font-jetbrains-mono text-[9px] font-bold tracking-widest px-3 py-1 uppercase">
+              Popular
+            </div>
+          )}
+
+          {/* Plan Title */}
+          <h3 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[15px] lg:text-[16px] mb-6">
+            {plan.title}
+          </h3>
+
+          {/* Pricing Block */}
+          <div class="mb-6 min-h-[80px]">
+            {plan.pricePrefix && (
+              <span class="block text-qwi-text-desc font-jetbrains-mono text-[13px] lg:text-[14px] mb-1">
+                {plan.pricePrefix}
+              </span>
+            )}
+            
+            <div class="flex items-end flex-wrap gap-2">
+              <span class={`text-accent-red font-jetbrains-mono font-bold leading-[1] ${plan.price.includes('\n') ? 'text-[28px] lg:text-[32px] whitespace-pre-line' : 'text-[32px] lg:text-[40px]'}`}>
+                {plan.price}
+              </span>
+              {plan.priceSuffix && (
+                <span class="text-qwi-text-desc font-jetbrains-mono text-[11px] lg:text-[12px] mb-1">
+                  {plan.priceSuffix}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Description */}
+          <p class="text-qwi-text-desc font-space-mono text-[11px] lg:text-[12px] leading-[1.6] mb-8 min-h-[50px]">
+            {plan.desc}
+          </p>
+
+          {/* Features List */}
+          <ul class="flex flex-col space-y-3 mb-10 flex-grow">
+            {plan.features.map((feature) => (
+              <li class="flex items-start">
+                <span class="text-accent-red mr-3 text-[11px] mt-[3px]">✓</span>
+                <span class="text-qwi-text-desc font-space-mono text-[11px] lg:text-[12px] leading-[1.5]">
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          {/* Button */}
+          <div class="mt-auto">
+            {plan.buttonType === 'primary' ? (
+              <button 
+                class="hover-scramble w-full bg-accent-red hover:bg-[#d64b1c] text-white font-jetbrains-mono font-bold text-[11px] tracking-widest py-3 uppercase transition-colors duration-300"
+                data-text={plan.buttonText}
+              >
+                <span class="scramble-text pointer-events-none">{plan.buttonText}</span>
+              </button>
+            ) : (
+              <button 
+                class="hover-scramble w-full bg-transparent border border-qwi-border-light hover:border-white text-qwi-text-heading font-jetbrains-mono font-bold text-[11px] tracking-widest py-3 uppercase transition-colors duration-300"
+                data-text={plan.buttonText}
+              >
+                <span class="scramble-text pointer-events-none">{plan.buttonText}</span>
+              </button>
+            )}
+          </div>
+
+        </div>
+      );
+    })}
+  </div>
+</section>

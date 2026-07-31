@@ -1,0 +1,98 @@
+---
+const services = [
+  {
+    num: "01",
+    title: "BRAND IDENTITY DESIGN",
+    desc: "Brand identity design in Dubai for UAE businesses that need strategy, logo...",
+  },
+  {
+    num: "02",
+    title: "LOGO DESIGN",
+    desc: "Logo design in Dubai for startups, SMEs, and growing UAE brands that...",
+  },
+  {
+    num: "03",
+    title: "WEB DESIGN",
+    desc: "Web design company in Dubai creating fast, SEO-ready websites for UAE businesses...",
+  },
+  {
+    num: "04",
+    title: "WEB DEVELOPMENT",
+    desc: "Website development company in Dubai building fast WordPress, Shopify, custom, and headless...",
+  },
+  {
+    num: "05",
+    title: "MOBILE APP DEVELOPMENT",
+    desc: "Mobile app development in Dubai for startups and UAE businesses building iOS,...",
+  },
+  {
+    num: "06",
+    title: "UI/UX DESIGN",
+    desc: "UI/UX design in Dubai for websites, SaaS products, ecommerce stores, and mobile...",
+  },
+  {
+    num: "07",
+    title: "AI SOLUTIONS",
+    desc: "AI solutions in Dubai for UAE businesses that need practical automation, chatbots,...",
+  },
+  {
+    num: "08",
+    title: "BLOCKCHAIN DEVELOPMENT",
+    desc: "Blockchain and Web3 development in Dubai for smart contracts, DeFi products, token...",
+  }
+];
+---
+
+<section class="w-full bg-qwi-bg-main border-t border-white/10 relative overflow-hidden py-24 md:py-32" id="services">
+  
+  {/* Header Section */}
+  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+    <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10">
+      OUR DIGITAL
+    </h2>
+    <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10">
+      SERVICES
+    </h2>
+  </div>
+
+  {/* Services List */}
+  <div class="max-w-5xl mx-auto px-4 md:px-6">
+    <div class="flex flex-col w-full">
+      {services.map((service, index) => (
+        <a 
+          href="#contact" 
+          class={`group block border-b border-white/10 ${index === 0 ? 'border-t' : ''} hover:bg-qwi-bg-hover transition-colors duration-300 relative px-4 md:px-6 -mx-4 md:-mx-6`}
+        >
+          <div class="flex flex-col md:flex-row md:items-center py-3 md:py-4 w-full transition-transform duration-300 origin-left group-hover:scale-[0.98]">
+            {/* Number */}
+            <div class="md:w-16 shrink-0 mb-2 md:mb-0">
+              <span class="text-accent-red font-jetbrains-mono text-[10px] md:text-[11px] font-bold tracking-widest opacity-80">
+                {service.num}
+              </span>
+            </div>
+            
+            {/* Title */}
+            <div class="md:flex-1 shrink-0 md:w-[280px] mb-1 md:mb-0 pr-4">
+              <h3 class="hover-scramble text-qwi-text-heading font-jetbrains-mono font-bold text-[13px] md:text-[15px] tracking-widest uppercase transition-colors duration-300 group-hover:text-qwi-text-heading" data-text={service.title}>
+                <span class="scramble-text pointer-events-none">{service.title}</span>
+              </h3>
+            </div>
+            
+            {/* Description */}
+            <div class="md:flex-[1.5]">
+              <p class="text-qwi-text-desc font-space-mono text-[10px] md:text-[11px] leading-[1.6] md:max-w-md transition-colors duration-300 group-hover:text-gray-300">
+                {service.desc}
+              </p>
+            </div>
+
+            {/* Arrow */}
+            <div class="hidden md:flex items-center justify-end w-12 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-accent-red font-space-mono">
+              →
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+  
+</section>

@@ -1,0 +1,144 @@
+---
+import Marquee from './Marquee.astro';
+---
+<div class="w-full flex flex-col">
+  <Marquee />
+  
+  <footer
+    class="w-full bg-qwi-bg-main relative overflow-hidden min-h-[90vh] flex flex-col justify-start pt-20 md:pt-24 pb-12"
+    id="contact"
+  >
+    {/* Dark red background glow (Fixed in center) */}
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div
+        class="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-accent-red/15 rounded-full blur-[140px] -translate-x-1/2 -translate-y-1/2"
+      >
+      </div>
+    </div>
+
+  {/* Background Vertical Lines (from Hero) */}
+  <div
+    class="absolute inset-0 z-0 flex justify-between w-[95vw] md:w-[90vw] max-w-[1920px] mx-auto pointer-events-none overflow-hidden opacity-40"
+  >
+    {
+      [1.2, 3.5, 0.8, 4.1, 2.5].map((delay) => (
+        <div class="relative w-[1px] h-full bg-white/5">
+          <div
+            class="absolute left-[-1px] w-[3px] h-[30vh] bg-gradient-to-b from-transparent via-accent-red to-transparent blur-[2px] light-strip-footer"
+            style={`animation-delay: ${delay}s;`}
+          />
+        </div>
+      ))
+    }
+  </div>
+
+  {/* Content Wrapper */}
+  <div class="relative z-10 flex flex-col items-center text-center px-4 w-full">
+    {/* Huge Heading */}
+    <h2
+      class="text-qwi-text-heading font-jetbrains-mono font-bold text-[14vw] md:text-[120px] leading-[0.85] tracking-tight uppercase mb-4 md:mb-6"
+    >
+      LET'S BUILD<br />TOGETHER
+    </h2>
+
+    {/* Email Link */}
+    <a
+      href="mailto:hello@qwisync.com"
+      class="hover-scramble text-accent-red font-jetbrains-mono font-bold text-[18px] md:text-[24px] mb-4 md:mb-6 transition-colors duration-300 hover:text-white"
+      data-text="hello@qwisync.com"
+    >
+      <span class="scramble-text pointer-events-none">hello@qwisync.com</span>
+    </a>
+
+    {/* Info Grid (Location & Socials) */}
+    <div
+      class="flex flex-row justify-center space-x-8 md:space-x-16 mb-8 md:mb-12"
+    >
+      {/* Location */}
+      <div class="flex flex-col items-center">
+        <span
+          class="text-qwi-text-desc font-space-mono text-[9px] md:text-[11px] tracking-widest uppercase mb-1 md:mb-2"
+          >Locations</span
+        >
+        <span
+          class="text-qwi-text-heading font-jetbrains-mono text-[11px] md:text-[13px] mb-0.5"
+          >Pakistan</span
+        >
+        <span
+          class="text-qwi-text-heading font-jetbrains-mono text-[11px] md:text-[13px]"
+          >US</span
+        >
+      </div>
+
+      {/* Socials */}
+      <div class="flex flex-col items-center">
+        <span
+          class="text-qwi-text-desc font-space-mono text-[9px] md:text-[11px] tracking-widest uppercase mb-1 md:mb-2"
+          >Social</span
+        >
+        <a
+          href="#"
+          class="hover-scramble text-qwi-text-heading font-jetbrains-mono text-[11px] md:text-[13px] hover:text-accent-red transition-colors duration-300 mb-0.5"
+          data-text="Instagram"
+          >
+          <span class="scramble-text pointer-events-none">Instagram</span>
+        </a>
+        <a
+          href="#"
+          class="hover-scramble text-qwi-text-heading font-jetbrains-mono text-[11px] md:text-[13px] hover:text-accent-red transition-colors duration-300"
+          data-text="LinkedIn"
+          >
+          <span class="scramble-text pointer-events-none">LinkedIn</span>
+        </a>
+      </div>
+    </div>
+
+    {/* Bottom Legal / Branding */}
+    <div class="flex flex-col items-center max-w-lg mx-auto">
+      {/* Text Logo */}
+      <div
+        class="text-qwi-text-heading font-jetbrains-mono font-bold text-[18px] tracking-tighter mb-3"
+      >
+        QWISYNC<span class="text-accent-red">.</span>
+      </div>
+
+      <p
+        class="text-qwi-text-desc font-space-mono text-[10px] md:text-[11px] leading-[1.6] mb-3"
+      >
+        A premier digital agency specializing in web design, mobile apps, UI/UX,
+        and custom software solutions.
+      </p>
+
+      <p class="text-[#403b36] font-space-mono text-[9px] md:text-[10px]">
+        &copy; {new Date().getFullYear()} Qwisync. All rights reserved.
+      </p>
+    </div>
+  </div>
+  </footer>
+</div>
+
+<style>
+  /* Vertical Light Strips */
+  .light-strip-footer {
+    animation: strip-light-footer 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    top: 120vh;
+  }
+  @keyframes strip-light-footer {
+    0% {
+      top: 120vh;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: -40vh;
+      opacity: 0;
+    }
+  }
+</style>
+
+

@@ -1,0 +1,69 @@
+---
+const stats = [
+  { number: "30", label: "Projects Delivered" },
+  { number: "6", label: "Skilled Team" },
+  { number: "6", label: "Years Experience" },
+  { number: "100", label: "% Client-Focused" }
+];
+---
+
+<section class="w-full bg-accent-red py-6 md:py-8 relative z-20">
+  <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-16 text-center" id="stats-container">
+    {stats.map((stat) => (
+      <div class="flex flex-col items-center justify-center space-y-6">
+        <h2 
+          class="text-qwi-bg-main font-jetbrains-mono text-[45px] md:text-[55px] font-bold leading-[0.8] tracking-tighter stat-number"
+          data-target={stat.number}
+        >
+          0
+        </h2>
+        <p class="text-text-brown font-space-mono text-[13px] md:text-[15px] tracking-[0.1em] font-bold">
+          {stat.label}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const statsContainer = document.getElementById('stats-container');
+  const statNumbers = document.querySelectorAll('.stat-number');
+  
+  if (statsContainer && statNumbers.length > 0) {
+    let animated = false;
+
+    const animateNumbers = () => {
+      statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target') || '0', 10);
+        let current = 0;
+        
+        // Speed up the animation slightly for smaller numbers so they all finish around the same time
+        const duration = 1500; // 1.5 seconds total duration
+        const frameRate = 30; // 30ms per frame
+        const totalFrames = duration / frameRate;
+        const increment = target / totalFrames; 
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            stat.textContent = target.toString();
+            clearInterval(timer);
+          } else {
+            stat.textContent = Math.ceil(current).toString();
+          }
+        }, frameRate);
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          animateNumbers();
+        }
+      });
+    }, { threshold: 0.3 }); // Trigger when 30% of the container is visible
+
+    observer.observe(statsContainer);
+  }
+</script>

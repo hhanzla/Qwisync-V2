@@ -1,0 +1,67 @@
+---
+const baseItems = [
+  "E-COMMERCE",
+  "WEB DEVELOPMENT",
+  "MOBILE APPS",
+  "AI SOLUTIONS",
+  "BRAND IDENTITY",
+  "UI/UX DESIGN",
+  "CRYPTO",
+  "SAAS"
+];
+
+// Duplicate to ensure it's wide enough to cover large screens seamlessly
+const items = [...baseItems, ...baseItems];
+---
+
+<div class="w-full overflow-hidden bg-accent-red py-3 md:py-4 flex flex-nowrap border-y border-[#331105]">
+  
+  {/* First Marquee Block */}
+  <div class="flex animate-marquee shrink-0 items-center">
+    {items.map((item) => (
+      <div class="flex items-center">
+        <span class="text-black font-jetbrains-mono font-bold text-[14px] md:text-[18px] tracking-widest px-4 md:px-6">
+          {item}
+        </span>
+        <span class="text-black text-[10px] md:text-[14px]">
+          ✦
+        </span>
+      </div>
+    ))}
+  </div>
+
+  {/* Second Marquee Block (Exact Duplicate for Seamless Looping) */}
+  <div class="flex animate-marquee shrink-0 items-center" aria-hidden="true">
+    {items.map((item) => (
+      <div class="flex items-center">
+        <span class="text-black font-jetbrains-mono font-bold text-[14px] md:text-[18px] tracking-widest px-4 md:px-6">
+          {item}
+        </span>
+        <span class="text-black text-[10px] md:text-[14px]">
+          ✦
+        </span>
+      </div>
+    ))}
+  </div>
+
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+  }
+  
+  /* Pause animation on hover for better UX */
+  .w-full:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+</style>

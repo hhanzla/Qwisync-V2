@@ -1,0 +1,70 @@
+---
+import { Globe, Plus } from 'lucide-react';
+---
+
+<header id="v2-header" class="fixed top-0 left-0 right-0 z-50 bg-qwi-bg-main/90 backdrop-blur-md border-b border-white/10 opacity-0 translate-y-[-20px]">
+  <div class="px-8 md:px-12 py-2 flex items-center justify-between max-w-[1920px] mx-auto">
+    
+    {/* Logo */}
+    <a href="/" class="flex items-center group relative z-10 hover:opacity-80 transition-opacity text-qwi-text-heading font-jetbrains-mono font-bold text-[20px] md:text-[24px] tracking-tighter">
+      QWISYNC<span class="text-accent-red">.</span>
+    </a>
+
+    {/* Navigation */}
+    <nav class="hidden lg:flex items-center space-x-5 xl:space-x-8 absolute left-[45%] -translate-x-1/2">
+      {[
+        { name: 'Home', id: 'hero' },
+        { name: 'Work', id: 'selected-work' },
+        { name: 'About', id: 'who-we-work-with' },
+        { name: 'Services', id: 'services' },
+        { name: 'Pricing', id: 'pricing' },
+        { name: 'Contact', id: 'contact' }
+      ].map((item) => (
+        <a 
+          href={`#${item.id}`} 
+          class="nav-link hover-scramble text-[10px] font-space-mono font-bold tracking-[0.2em] uppercase text-qwi-text-body hover:text-accent-red transition-colors duration-300"
+          data-text={item.name}
+        >
+          <span class="scramble-text pointer-events-none">{item.name}</span>
+        </a>
+      ))}
+    </nav>
+
+    {/* Right Actions */}
+    <div class="hidden lg:flex items-center space-x-4">
+      
+      {/* Language Toggle */}
+      <div class="flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[9px] uppercase">
+        <a href="#" class="px-4 py-2.5 text-gray-500 hover:text-white hover:bg-white/5 transition-colors">AR</a>
+        <div class="w-[1px] h-4 bg-white/10"></div>
+        <a href="#" class="px-4 py-2.5 text-accent-red bg-white/5">EN</a>
+      </div>
+      
+      {/* CTA Button */}
+      <a href="/contact" class="hover-scramble flex items-center space-x-2.5 px-6 py-2.5 bg-qwi-bg-card border border-white/10 font-space-mono font-bold tracking-[0.15em] text-[10px] text-white hover:bg-white/10 hover:text-accent-red transition-colors group" data-text="GET CONSULTATION">
+        <div class="w-1.5 h-1.5 rounded-full bg-accent-red group-hover:scale-125 transition-transform pointer-events-none"></div>
+        <span class="scramble-text pointer-events-none">GET CONSULTATION</span>
+      </a>
+      
+    </div>
+
+    {/* Mobile Toggle */}
+    <button class="lg:hidden text-white flex flex-col space-y-1.5 p-2 focus:outline-none group">
+      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-colors"></span>
+      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-colors"></span>
+    </button>
+  </div>
+</header>
+
+<script>
+  import gsap from 'gsap';
+
+  // GSAP Entrance Animation
+  gsap.to('#v2-header', {
+    y: 0,
+    opacity: 1,
+    duration: 1.2,
+    ease: 'power3.out',
+    delay: 0.2
+  });
+</script>
