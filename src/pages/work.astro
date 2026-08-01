@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Selected Work | Qwisync">
+  {/* Dark red background glow (Fixed at top) */}
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div
+      class="absolute top-0 left-1/2 w-[600px] h-[600px] bg-accent-red/15 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+  </div>
+
+  {/* Hero & Filter Section Combined */}
+  <section class="relative w-full overflow-hidden pt-32 mb-24 md:mb-32">
+    
+    {/* Background Vertical Lines */}
+    <div class="absolute inset-0 z-0 flex justify-between w-[95vw] md:w-[90vw] max-w-[1920px] mx-auto pointer-events-none overflow-hidden opacity-40">
+      {[1.2, 3.5, 0.8, 4.1, 2.5].map((delay) => (
+        <div class="relative w-[1px] h-full bg-white/5">
+          <div
+            class="absolute left-[-1px] w-[3px] h-[30vh] bg-gradient-to-b from-transparent via-accent-red to-transparent blur-[2px] light-strip"
+            style={`animation-delay: ${delay}s;`}
+          />
+        </div>
+      ))}
+    </div>
+
+    <div class="relative z-10 w-full min-h-[50vh] md:min-h-[60vh] flex flex-col justify-center items-center text-center px-4 mt-0 md:-mt-4 pb-16 md:pb-24">
+      {/* Portfolio Badge */}
+      <div class="hero-reveal overflow-hidden mb-6 md:mb-8">
+        <div class="translate-y-full inline-block">
+          <div class="border border-accent-red/20 bg-accent-red/10 backdrop-blur-md px-4 py-1.5 flex items-center justify-center">
+            <h3 class="hover-scramble text-accent-red font-space-mono text-[9px] md:text-[10px] font-bold tracking-[0.25em] uppercase leading-none mt-[2px] cursor-default" data-text="OUR PORTFOLIO">
+              <span class="scramble-text pointer-events-none">OUR PORTFOLIO</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Headings */}
+      <div class="flex flex-col items-center justify-center mb-1">
+        <div class="hero-reveal overflow-hidden leading-[0.8] mb-1">
+          <h1 class="text-[10vw] md:text-[75px] lg:text-[90px] tracking-[-0.05em] font-jetbrains-mono font-bold text-[#EFEBE3] translate-y-[120%] inline-block uppercase whitespace-nowrap">
+            SELECTED
+          </h1>
+        </div>
+        <div class="hero-reveal overflow-hidden leading-[0.8] mb-1">
+          <h1 class="text-[10vw] md:text-[75px] lg:text-[90px] tracking-[-0.05em] font-jetbrains-mono font-bold text-accent-red translate-y-[120%] inline-block uppercase whitespace-nowrap">
+            WORK
+          </h1>
+        </div>
+      </div>
+
+      {/* Description */}
+      <div class="hero-reveal overflow-hidden mt-6 mb-4 max-w-xl mx-auto">
+        <p class="font-space-mono text-qwi-text-body text-[12px] md:text-[14px] leading-[1.8] translate-y-full inline-block">
+          Websites, brands, apps, and platforms built for real Pak, US business goals.
+        </p>
+      </div>
+    </div>
+
+    {/* Filter Tabs Section */}
+    <div class="w-full relative z-20 border-b border-white/5">
+    <div class="w-[90%] max-w-[1200px] mx-auto flex items-center space-x-8 md:space-x-12 overflow-x-auto no-scrollbar">
+      
+      {/* ALL (Active) */}
+      <button class="relative pb-4 group focus:outline-none shrink-0 cursor-pointer">
+        <span class="text-accent-red font-space-mono text-[11px] md:text-[13px] font-bold tracking-widest uppercase">
+          ALL
+        </span>
+        <div class="absolute bottom-[-1px] left-0 w-full h-[2px] bg-accent-red"></div>
+      </button>
+
+      {/* WEB DESIGN (Inactive) */}
+      <button class="relative pb-4 group focus:outline-none shrink-0 cursor-pointer">
+        <span class="text-qwi-text-desc group-hover:text-qwi-text-heading transition-colors duration-300 font-space-mono text-[11px] md:text-[13px] font-bold tracking-widest uppercase">
+          WEB DESIGN
+        </span>
+        <div class="absolute bottom-[-1px] left-0 w-full h-[2px] bg-transparent group-hover:bg-white/10 transition-colors duration-300"></div>
+      </button>
+      
+    </div>
+  </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Vertical Light Strips */
+  .light-strip {
+    animation: strip-light 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    top: -40vh;
+  }
+  @keyframes strip-light {
+    0% {
+      top: -40vh;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 120vh;
+      opacity: 0;
+    }
+</style>
+
+<script>
+  import gsap from "gsap";
+
+  // Text Reveal Sequence
+  const reveals = document.querySelectorAll(".hero-reveal > *");
+  if (reveals.length > 0) {
+    gsap.to(reveals, {
+      y: 0,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: "power4.out",
+      delay: 0.5,
+    });
+  }
+</script>

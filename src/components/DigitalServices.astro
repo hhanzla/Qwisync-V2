@@ -1,63 +1,72 @@
 ---
+interface Props {
+  hideHeader?: boolean;
+  hideTopBorder?: boolean;
+  compactTopPadding?: boolean;
+}
+const { hideHeader = false, hideTopBorder = false, compactTopPadding = false } = Astro.props;
+
 const services = [
   {
     num: "01",
     title: "BRAND IDENTITY DESIGN",
-    desc: "Brand identity design in Dubai for UAE businesses that need strategy, logo...",
+    desc: "Brand identity design in Pak, US for businesses that need strategy, logo...",
   },
   {
     num: "02",
     title: "LOGO DESIGN",
-    desc: "Logo design in Dubai for startups, SMEs, and growing UAE brands that...",
+    desc: "Logo design in Pak, US for startups, SMEs, and growing brands that...",
   },
   {
     num: "03",
     title: "WEB DESIGN",
-    desc: "Web design company in Dubai creating fast, SEO-ready websites for UAE businesses...",
+    desc: "Web design company in Pak, US creating fast, SEO-ready websites for businesses...",
   },
   {
     num: "04",
     title: "WEB DEVELOPMENT",
-    desc: "Website development company in Dubai building fast WordPress, Shopify, custom, and headless...",
+    desc: "Website development company in Pak, US building fast WordPress, Shopify, custom, and headless...",
   },
   {
     num: "05",
     title: "MOBILE APP DEVELOPMENT",
-    desc: "Mobile app development in Dubai for startups and UAE businesses building iOS,...",
+    desc: "Mobile app development in Pak, US for startups and businesses building iOS,...",
   },
   {
     num: "06",
     title: "UI/UX DESIGN",
-    desc: "UI/UX design in Dubai for websites, SaaS products, ecommerce stores, and mobile...",
+    desc: "UI/UX design in Pak, US for websites, SaaS products, ecommerce stores, and mobile...",
   },
   {
     num: "07",
     title: "AI SOLUTIONS",
-    desc: "AI solutions in Dubai for UAE businesses that need practical automation, chatbots,...",
+    desc: "AI solutions in Pak, US for businesses that need practical automation, chatbots,...",
   },
   {
     num: "08",
     title: "BLOCKCHAIN DEVELOPMENT",
-    desc: "Blockchain and Web3 development in Dubai for smart contracts, DeFi products, token...",
+    desc: "Blockchain and Web3 development in Pak, US for smart contracts, DeFi products, token...",
   }
 ];
 ---
 
-<section class="w-full bg-qwi-bg-main border-t border-white/10 relative overflow-hidden py-24 md:py-32" id="services">
+<section class={`w-full bg-qwi-bg-main relative overflow-hidden ${compactTopPadding ? 'pt-8 md:pt-12 pb-24 md:pb-32' : 'py-24 md:py-32'} ${hideTopBorder ? '' : 'border-t border-white/10'}`} id="services">
   
   {/* Header Section */}
-  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
-    <div class="services-reveal overflow-hidden leading-[0.9] pb-2">
-      <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
-        OUR DIGITAL
-      </h2>
+  {!hideHeader && (
+    <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+      <div class="services-reveal overflow-hidden leading-[0.9] pb-2">
+        <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+          OUR DIGITAL
+        </h2>
+      </div>
+      <div class="services-reveal overflow-hidden leading-[0.9] pb-2">
+        <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+          SERVICES
+        </h2>
+      </div>
     </div>
-    <div class="services-reveal overflow-hidden leading-[0.9] pb-2">
-      <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
-        SERVICES
-      </h2>
-    </div>
-  </div>
+  )}
 
   {/* Services List */}
   <div class="services-list-container max-w-5xl mx-auto px-4 md:px-6">
@@ -65,7 +74,7 @@ const services = [
       {services.map((service, index) => (
         <a 
           href={`/services#${service.title.toLowerCase().replace(/\s+/g, '-')}`}
-          class={`service-row opacity-0 translate-y-8 group block border-b border-white/10 ${index === 0 ? 'border-t' : ''} hover:bg-[#0d0d0d] transition-colors duration-300 relative px-4 md:px-6 -mx-4 md:-mx-6`}
+          class={`service-row group block border-b border-white/10 ${index === 0 ? 'border-t opacity-0 translate-y-8 first-item-anim' : 'opacity-0 translate-y-8 animate-on-scroll'} hover:bg-[#0d0d0d] transition-colors duration-300 relative px-4 md:px-6 -mx-4 md:-mx-6`}
         >
           <div class="flex flex-col md:flex-row md:items-center py-3 md:py-4 w-full transition-transform duration-300 origin-left group-hover:scale-[0.98]">
             {/* Number */}
@@ -122,7 +131,7 @@ const services = [
   });
 
   // Fade Up Service Rows Individually
-  const rows = document.querySelectorAll('#services .service-row');
+  const rows = document.querySelectorAll('#services .animate-on-scroll');
   rows.forEach((row) => {
     gsap.to(row, {
       scrollTrigger: {
@@ -135,4 +144,16 @@ const services = [
       ease: 'power3.out'
     });
   });
+
+  // Animate first item on load (to sync with hero sections if near top)
+  const firstItems = document.querySelectorAll('#services .first-item-anim');
+  if (firstItems.length > 0) {
+    gsap.to(firstItems, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay: 1.0, // Matches hero animation completion
+      ease: 'power3.out'
+    });
+  }
 </script>

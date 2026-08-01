@@ -166,6 +166,59 @@ const { title = 'Qwisync' } = Astro.props;
 				document.addEventListener('mouseleave', () => cursor.style.opacity = '0');
 				document.addEventListener('mouseenter', () => cursor.style.opacity = '1');
 			}
+
+			// --- Scramble Text Animation ---
+			const chars = '!<>-_\\/[]{}—=+*^?#________';
+			
+			class ScrambleText {
+				constructor(el) {
+					this.el = el;
+					this.originalText = el.getAttribute('data-text') || '';
+					
+					this.el.addEventListener('mouseenter', () => this.scramble());
+					this.el.addEventListener('mouseleave', () => this.resolve());
+				}
+
+				scramble() {
+					clearInterval(this.interval);
+					const length = this.originalText.length;
+					let iterations = 0;
+					
+					this.interval = setInterval(() => {
+						const scrambleTextEl = this.el.querySelector('.scramble-text');
+						if (!scrambleTextEl) return;
+						
+						scrambleTextEl.textContent = this.originalText
+							.split('')
+							.map((char, index) => {
+								if (index < iterations) {
+									return this.originalText[index];
+								}
+								return chars[Math.floor(Math.random() * chars.length)];
+							})
+							.join('');
+						
+						if (iterations >= length) {
+							clearInterval(this.interval);
+						}
+						
+						iterations += 1 / 3;
+					}, 30);
+				}
+
+				resolve() {
+					clearInterval(this.interval);
+					const scrambleTextEl = this.el.querySelector('.scramble-text');
+					if (scrambleTextEl) {
+						scrambleTextEl.textContent = this.originalText;
+					}
+				}
+			}
+
+			// Initialize on all scramble elements
+			document.querySelectorAll('.hover-scramble').forEach(btn => {
+				new ScrambleText(btn);
+			});
 		</script>
 	</body>
 </html>

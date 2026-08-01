@@ -1,155 +1,210 @@
 ---
-import { Globe, Plus } from 'lucide-react';
+import { Globe, Plus } from "lucide-react";
 ---
 
-<header id="v2-header" class="fixed top-0 left-0 right-0 z-50 bg-qwi-bg-main/90 backdrop-blur-md border-b border-white/10 opacity-0 translate-y-[-20px]">
-  <div class="px-8 md:px-12 py-2 flex items-center justify-between max-w-[1920px] mx-auto">
-    
+<header
+  id="v2-header"
+  class="fixed top-0 left-0 right-0 z-50 bg-qwi-bg-main/90 backdrop-blur-md border-b border-white/10 opacity-0 translate-y-[-20px]"
+>
+  <div
+    class="px-8 md:px-12 py-2 flex items-center justify-between max-w-[1920px] mx-auto"
+  >
     {/* Logo */}
-    <a href="/" class="flex items-center group relative z-10 hover:opacity-80 transition-opacity text-qwi-text-heading font-jetbrains-mono font-bold text-[20px] md:text-[24px] tracking-tighter">
+    <a
+      href="/"
+      class="flex items-center group relative z-10 hover:opacity-80 transition-opacity text-qwi-text-heading font-jetbrains-mono font-bold text-[20px] md:text-[24px] tracking-tighter"
+    >
       QWISYNC<span class="text-accent-red">.</span>
     </a>
 
     {/* Navigation */}
-    <nav class="hidden lg:flex items-center space-x-5 xl:space-x-8 absolute left-[45%] -translate-x-1/2">
-      {[
-        { name: 'Home', id: 'hero' },
-        { name: 'Work', id: 'selected-work' },
-        { name: 'About', id: 'who-we-work-with' },
-        { name: 'Services', id: 'services' },
-        { name: 'Pricing', id: 'pricing' },
-        { name: 'Contact', id: 'contact' }
-      ].map((item) => (
-        <a 
-          href={`#${item.id}`} 
-          class="nav-link hover-scramble text-[10px] font-space-mono font-bold tracking-[0.2em] uppercase text-qwi-text-body hover:text-accent-red transition-colors duration-300"
-          data-text={item.name}
-        >
-          <span class="scramble-text pointer-events-none">{item.name}</span>
-        </a>
-      ))}
+    <nav
+      class="hidden lg:flex items-center space-x-5 xl:space-x-8 absolute left-[45%] -translate-x-1/2"
+    >
+      {
+        [
+          { name: "Home", path: "/" },
+          { name: "Work", path: "/work" },
+          { name: "About", path: "/#who-we-work-with" },
+          { name: "Services", path: "/services" },
+          { name: "Pricing", path: "/#pricing" },
+          { name: "Contact", path: "/#contact" },
+        ].map((item) => (
+          <a
+            href={item.path}
+            class="nav-link hover-scramble text-[10px] font-space-mono font-bold tracking-[0.2em] uppercase text-qwi-text-body hover:text-accent-red transition-colors duration-300"
+            data-text={item.name}
+          >
+            <span class="scramble-text pointer-events-none">{item.name}</span>
+          </a>
+        ))
+      }
     </nav>
 
     {/* Right Actions */}
     <div class="hidden lg:flex items-center space-x-4">
-      
       {/* Language Toggle */}
-      <div class="flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[9px] uppercase">
-        <a href="#" class="px-4 py-2.5 text-gray-500 hover:text-white hover:bg-white/5 transition-colors">URDU</a>
+      <div
+        class="flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[9px] uppercase"
+      >
+        <a
+          href="#"
+          class="px-4 py-2.5 text-gray-500 hover:text-white hover:bg-white/5 transition-colors"
+          >URDU</a
+        >
         <div class="w-[1px] h-4 bg-white/10"></div>
         <a href="#" class="px-4 py-2.5 text-accent-red bg-white/5">ENG</a>
       </div>
-      
+
       {/* CTA Button */}
-      <a href="/contact" class="hover-scramble flex items-center space-x-2.5 px-6 py-2.5 bg-qwi-bg-card border border-white/10 font-space-mono font-bold tracking-[0.15em] text-[10px] text-white hover:bg-white/10 hover:text-accent-red transition-colors group" data-text="GET CONSULTATION">
-        <div class="w-1.5 h-1.5 rounded-full bg-accent-red group-hover:scale-125 transition-transform pointer-events-none"></div>
+      <a
+        href="/contact"
+        class="hover-scramble flex items-center space-x-2.5 px-6 py-2.5 bg-qwi-bg-card border border-white/10 font-space-mono font-bold tracking-[0.15em] text-[10px] text-white hover:bg-white/10 hover:text-accent-red transition-colors group"
+        data-text="GET CONSULTATION"
+      >
+        <div
+          class="w-1.5 h-1.5 rounded-full bg-accent-red group-hover:scale-125 transition-transform pointer-events-none"
+        >
+        </div>
         <span class="scramble-text pointer-events-none">GET CONSULTATION</span>
       </a>
-      
     </div>
 
     {/* Mobile Toggle */}
-    <button id="mobile-menu-toggle" class="lg:hidden text-white flex flex-col space-y-1.5 p-2 focus:outline-none group z-50">
-      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"></span>
-      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"></span>
-      <span class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"></span>
+    <button
+      id="mobile-menu-toggle"
+      class="lg:hidden text-white flex flex-col space-y-1.5 p-2 focus:outline-none group z-50"
+    >
+      <span
+        class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"
+      ></span>
+      <span
+        class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"
+      ></span>
+      <span
+        class="w-6 h-[2px] bg-white block group-hover:bg-accent-red transition-all duration-300 origin-center"
+      ></span>
     </button>
   </div>
 </header>
 
-  {/* Fullscreen Mobile Menu */}
-  <div id="mobile-menu" class="fixed inset-0 bg-qwi-bg-main z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500 pt-20">
-    <nav class="flex flex-col items-center space-y-6">
-      {[
-        { name: 'Home', id: 'hero' },
-        { name: 'Work', id: 'selected-work' },
-        { name: 'About', id: 'who-we-work-with' },
-        { name: 'Services', id: 'services' },
-        { name: 'Pricing', id: 'pricing' },
-        { name: 'Contact', id: 'contact' }
+{/* Fullscreen Mobile Menu */}
+<div
+  id="mobile-menu"
+  class="fixed inset-0 bg-qwi-bg-main z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500 pt-20"
+>
+  <nav class="flex flex-col items-center space-y-6">
+    {
+      [
+        { name: "Home", path: "/" },
+        { name: "Work", path: "/work" },
+        { name: "About", path: "/#who-we-work-with" },
+        { name: "Services", path: "/services" },
+        { name: "Pricing", path: "/#pricing" },
+        { name: "Contact", path: "/#contact" },
       ].map((item) => (
-        <a 
-          href={`#${item.id}`} 
+        <a
+          href={item.path}
           class="mobile-nav-link mobile-anim-item opacity-0 text-qwi-text-heading font-jetbrains-mono font-bold text-3xl uppercase tracking-tighter hover:text-accent-red transition-colors"
         >
           {item.name}
         </a>
-      ))}
-    </nav>
-    
-    <div class="mt-16 flex flex-col items-center space-y-4">
-      {/* Language Toggle */}
-      <div class="mobile-anim-item opacity-0 flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[10px] uppercase">
-        <a href="#" class="px-4 py-2 text-gray-500 hover:text-white hover:bg-white/5 transition-colors">URDU</a>
-        <div class="w-[1px] h-4 bg-white/10"></div>
-        <a href="#" class="px-4 py-2 text-accent-red bg-white/5">ENG</a>
-      </div>
-      
-      {/* Email */}
-      <a href="mailto:hello@qwisync.com" class="mobile-anim-item opacity-0 text-accent-red font-space-mono text-xs hover:text-white transition-colors">
-        hello@qwisync.com
-      </a>
+      ))
+    }
+  </nav>
 
-      {/* Locations */}
-      <div class="mobile-anim-item opacity-0 text-qwi-text-desc font-space-mono text-[10px] tracking-widest uppercase">
-        PAK , US
-      </div>
+  <div class="mt-16 flex flex-col items-center space-y-4">
+    {/* Language Toggle */}
+    <div
+      class="mobile-anim-item opacity-0 flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[10px] uppercase"
+    >
+      <a
+        href="#"
+        class="px-4 py-2 text-gray-500 hover:text-white hover:bg-white/5 transition-colors"
+        >URDU</a
+      >
+      <div class="w-[1px] h-4 bg-white/10"></div>
+      <a href="#" class="px-4 py-2 text-accent-red bg-white/5">ENG</a>
+    </div>
+
+    {/* Email */}
+    <a
+      href="mailto:hello@qwisync.com"
+      class="mobile-anim-item opacity-0 text-accent-red font-space-mono text-xs hover:text-white transition-colors"
+    >
+      hello@qwisync.com
+    </a>
+
+    {/* Locations */}
+    <div
+      class="mobile-anim-item opacity-0 text-qwi-text-desc font-space-mono text-[10px] tracking-widest uppercase"
+    >
+      PAK , US
     </div>
   </div>
+</div>
 
 <script>
   // @ts-nocheck
-  import gsap from 'gsap';
+  import gsap from "gsap";
   // GSAP Entrance Animation
-  gsap.to('#v2-header', {
+  gsap.to("#v2-header", {
     y: 0,
     opacity: 1,
     duration: 1.2,
-    ease: 'power3.out',
-    delay: 0.2
+    ease: "power3.out",
+    delay: 0.2,
   });
 
   // Mobile Menu Logic
-  const mobileToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  const mobileToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-nav-link");
   let isMenuOpen = false;
 
   if (mobileToggle && mobileMenu) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener("click", () => {
       isMenuOpen = !isMenuOpen;
-      
-      const spans = mobileToggle.querySelectorAll('span');
+
+      const spans = mobileToggle.querySelectorAll("span");
 
       if (isMenuOpen) {
-        mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-        mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-        
-        spans[0].style.transform = 'translateY(8px) rotate(45deg)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'translateY(-8px) rotate(-45deg)';
-        
+        mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+        mobileMenu.classList.add("opacity-100", "pointer-events-auto");
+
+        spans[0].style.transform = "translateY(8px) rotate(45deg)";
+        spans[1].style.opacity = "0";
+        spans[2].style.transform = "translateY(-8px) rotate(-45deg)";
+
         // Stagger in the menu items
-        gsap.fromTo('.mobile-anim-item', 
+        gsap.fromTo(
+          ".mobile-anim-item",
           { y: 30, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power3.out', delay: 0.2 }
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power3.out",
+            delay: 0.2,
+          },
         );
 
-        if (('lenis' in window)) window['lenis'].stop();
+        if ("lenis" in window) window["lenis"].stop();
       } else {
-        mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-        mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
-        
-        spans[0].style.transform = 'none';
-        spans[1].style.opacity = '1';
-        spans[2].style.transform = 'none';
-        
-        if (('lenis' in window)) window['lenis'].start();
+        mobileMenu.classList.add("opacity-0", "pointer-events-none");
+        mobileMenu.classList.remove("opacity-100", "pointer-events-auto");
+
+        spans[0].style.transform = "none";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "none";
+
+        if ("lenis" in window) window["lenis"].start();
       }
     });
 
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
         if (isMenuOpen) {
           mobileToggle.click();
         }
