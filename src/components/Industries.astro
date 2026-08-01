@@ -1,0 +1,108 @@
+---
+const industries = [
+  {
+    num: "01",
+    title: "Fintech & Banking",
+    desc: "Trading platforms, payment systems, banking apps, and financial dashboards."
+  },
+  {
+    num: "02",
+    title: "Blockchain & Crypto",
+    desc: "DeFi protocols, NFT platforms, token launches, and decentralized applications."
+  },
+  {
+    num: "03",
+    title: "SaaS & Technology",
+    desc: "Product dashboards, admin panels, multi-tenant platforms, and developer tools."
+  },
+  {
+    num: "04",
+    title: "E-commerce & Retail",
+    desc: "Online stores, marketplaces, inventory systems, and checkout optimization."
+  },
+  {
+    num: "05",
+    title: "Startups & Ventures",
+    desc: "MVPs, pitch decks, landing pages, and growth-stage product development."
+  },
+  {
+    num: "06",
+    title: "Healthcare & Education",
+    desc: "Patient portals, EdTech platforms, learning management, and wellness apps."
+  }
+];
+---
+
+<section class="w-full bg-qwi-bg-main relative overflow-hidden py-24 md:py-32 border-t border-white/10" id="industries-we-serve">
+  
+  {/* Header Section */}
+  <div class="flex flex-col items-center justify-center text-center mb-16 md:mb-24">
+    <div class="industry-reveal overflow-hidden leading-[0.9] pb-2">
+      <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+        INDUSTRIES
+      </h2>
+    </div>
+    <div class="industry-reveal overflow-hidden leading-[0.9] pb-2">
+      <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+        WE SERVE
+      </h2>
+    </div>
+  </div>
+
+  {/* Grid Section */}
+  <div class="w-[90%] max-w-[1200px] mx-auto px-4 md:px-0">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      {industries.map((industry, index) => (
+        <div class="industry-card opacity-0 translate-y-12 p-8 md:p-10 border border-white/5 bg-[#0a0a0a] hover:bg-[#111] hover:border-white/10 transition-all duration-300 group">
+          <div class="text-accent-red font-jetbrains-mono font-bold text-[12px] md:text-[14px] mb-4">
+            {industry.num}
+          </div>
+          <h3 class="hover-scramble text-qwi-text-heading font-jetbrains-mono font-bold text-[18px] md:text-[20px] mb-3 tracking-wide" data-text={industry.title}>
+            <span class="scramble-text pointer-events-none">{industry.title}</span>
+          </h3>
+          <p class="text-qwi-text-desc font-space-mono text-[12px] md:text-[13px] leading-[1.8] group-hover:text-gray-300 transition-colors duration-300">
+            {industry.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Reveal Header Texts
+  const titleReveals = document.querySelectorAll('#industries-we-serve .industry-reveal > h2');
+  if (titleReveals.length > 0) {
+    gsap.to(titleReveals, {
+      scrollTrigger: {
+        trigger: '#industries-we-serve',
+        start: 'top 80%',
+      },
+      y: 0,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: 'power4.out'
+    });
+  }
+
+  // Fade Up Industry Cards
+  const cards = document.querySelectorAll('#industries-we-serve .industry-card');
+  if (cards.length > 0) {
+    gsap.to(cards, {
+      scrollTrigger: {
+        trigger: '#industries-we-serve .grid',
+        start: 'top 85%',
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      stagger: 0.1,
+      ease: 'power3.out'
+    });
+  }
+</script>

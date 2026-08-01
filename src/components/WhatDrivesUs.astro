@@ -1,0 +1,108 @@
+---
+const reasons = [
+  {
+    num: "01",
+    title: "Craft Over Shortcuts",
+    desc: "Every pixel, every line of code matters. We take the time to get details right because your product deserves nothing less."
+  },
+  {
+    num: "02",
+    title: "Transparency First",
+    desc: "No black boxes. You see the work as it happens, give feedback in real time, and always know where your project stands."
+  },
+  {
+    num: "03",
+    title: "Ship Fast, Ship Right",
+    desc: "Speed without sacrifice. Our AI-powered workflow means we deliver faster than traditional agencies without cutting corners."
+  },
+  {
+    num: "04",
+    title: "Built to Last",
+    desc: "We design and develop for the long term — products that scale with your business, not ones you'll outgrow in a year."
+  }
+];
+---
+
+<section class="w-full bg-qwi-bg-main relative overflow-hidden py-24 md:py-32 border-t border-white/10" id="what-drives-us">
+  
+  {/* Header Section */}
+  <div class="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+    <div class="drives-reveal overflow-hidden leading-[0.9] pb-2">
+      <h2 class="text-qwi-text-heading font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+        WHAT
+      </h2>
+    </div>
+    <div class="drives-reveal overflow-hidden leading-[0.9] pb-2">
+      <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] font-jetbrains-mono font-bold text-[10vw] md:text-[80px] leading-[0.9] tracking-tighter uppercase relative z-10 translate-y-[120%] inline-block">
+        DRIVES US
+      </h2>
+    </div>
+  </div>
+
+  {/* Reasons List */}
+  <div class="drives-list-container max-w-5xl mx-auto px-4 md:px-6">
+    <div class="flex flex-col w-full">
+      {reasons.map((reason, index) => (
+        <div
+          class={`drives-row opacity-0 translate-y-8 animate-on-scroll group block border-b border-white/10 ${index === 0 ? 'border-t' : ''} hover:bg-[#0d0d0d] cursor-default transition-colors duration-300 relative px-4 md:px-6 -mx-4 md:-mx-6`}
+        >
+          <div class="flex flex-col md:flex-row py-3 md:py-4 w-full transition-transform duration-300 origin-left group-hover:scale-[0.98]">
+            {/* Number */}
+            <div class="md:w-16 shrink-0 mb-4 md:mb-0 pt-1">
+              <span class="text-accent-red font-jetbrains-mono text-[10px] md:text-[11px] font-bold tracking-widest opacity-80">
+                {reason.num}
+              </span>
+            </div>
+            
+            {/* Content */}
+            <div class="md:flex-[3] shrink-0">
+              <h3 class="hover-scramble text-qwi-text-heading font-jetbrains-mono font-bold text-[15px] md:text-[18px] tracking-wide mb-2 md:mb-3 transition-colors duration-300 group-hover:text-qwi-text-heading" data-text={reason.title}>
+                <span class="scramble-text pointer-events-none">{reason.title}</span>
+              </h3>
+              <p class="text-qwi-text-desc font-space-mono text-[11px] md:text-[13px] leading-[1.6] max-w-2xl transition-colors duration-300 group-hover:text-gray-300">
+                {reason.desc}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import ScrollTrigger from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Reveal Header Texts
+  const titleReveals = document.querySelectorAll('#what-drives-us .drives-reveal > h2');
+  if (titleReveals.length > 0) {
+    gsap.to(titleReveals, {
+      scrollTrigger: {
+        trigger: '#what-drives-us',
+        start: 'top 80%',
+      },
+      y: 0,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: 'power4.out'
+    });
+  }
+
+  // Fade Up Reason Rows
+  const rows = document.querySelectorAll('#what-drives-us .animate-on-scroll');
+  rows.forEach((row) => {
+    gsap.to(row, {
+      scrollTrigger: {
+        trigger: row,
+        start: 'top 90%',
+      },
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: 'power3.out'
+    });
+  });
+</script>
