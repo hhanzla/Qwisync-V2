@@ -176,13 +176,23 @@ import ScrambleButton from './ui/ScrambleButton.astro';
   // Text Reveal Sequence
   const reveals = document.querySelectorAll(".hero-reveal > *");
 
-  gsap.to(reveals, {
-    y: 0,
-    duration: 1.2,
-    stagger: 0.15,
-    ease: "power4.out",
-    delay: 0.5,
-  });
+  function initHeroAnimations() {
+    gsap.to(reveals, {
+      y: 0,
+      duration: 1.2,
+      stagger: 0.15,
+      ease: "power4.out",
+      delay: 0.2, // Reduced delay since preloader already takes time
+    });
+  }
+
+  // Check if preloader exists
+  if (document.getElementById('preloader')) {
+    window.addEventListener('preloaderComplete', initHeroAnimations);
+  } else {
+    // If no preloader (e.g. on other pages), run immediately
+    setTimeout(initHeroAnimations, 300);
+  }
 
   // Cursor glow effect
   const cursorGlow = document.getElementById("cursor-glow");

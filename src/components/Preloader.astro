@@ -1,0 +1,70 @@
+---
+---
+<div id="preloader" class="fixed inset-0 z-[9999] bg-[#0a0a0a] flex flex-col items-center justify-center pointer-events-auto">
+  <div class="flex flex-col items-center w-full max-w-[200px] sm:max-w-[240px]">
+    {/* Logo */}
+    <div class="mb-8 opacity-0" id="preloader-logo">
+      <span class="text-white text-[24px] md:text-[28px] font-jetbrains-mono font-bold tracking-tighter">QWISYNC<span class="text-accent-red">.</span></span>
+    </div>
+    
+    {/* Progress Bar */}
+    <div class="w-full h-[1px] bg-white/10 relative overflow-hidden mb-4">
+      <div id="preloader-progress" class="absolute top-0 left-0 h-full w-0 bg-accent-red"></div>
+    </div>
+    
+    {/* Percentage */}
+    <div class="font-space-mono text-[10px] text-gray-500 tracking-widest" id="preloader-text">
+      00
+    </div>
+  </div>
+</div>
+
+<script>
+  import gsap from 'gsap';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const preloader = document.getElementById('preloader');
+    const progress = document.getElementById('preloader-progress');
+    const text = document.getElementById('preloader-text');
+    const logo = document.getElementById('preloader-logo');
+
+    if (preloader) {
+      // Prevent scrolling while loading
+      document.body.style.overflow = 'hidden';
+
+      // Fade in logo
+      gsap.to(logo, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+
+      // Animate progress
+      const tl = gsap.timeline({
+        onUpdate: () => {
+          // Update text number
+          if (text) {
+            const progressValue = Math.round(tl.progress() * 100);
+            text.innerText = progressValue.toString().padStart(2, '0');
+          }
+        },
+        onComplete: () => {
+          // Slide preloader up
+          gsap.to(preloader, {
+            yPercent: -100,
+            duration: 1,
+            ease: 'power4.inOut',
+            delay: 0.2,
+            onComplete: () => {
+              document.body.style.overflow = '';
+              preloader.remove();
+              window.dispatchEvent(new Event('preloaderComplete'));
+            }
+          });
+        }
+      });
+
+      tl.to(progress, {
+        width: '100%',
+        duration: 1.8,
+        ease: 'power3.inOut'
+      });
+    }
+  });
+</script>

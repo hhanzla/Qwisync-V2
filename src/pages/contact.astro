@@ -1,0 +1,303 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import { ArrowRight } from 'lucide-react';
+---
+
+<Layout title="Contact Us | Qwisync">
+  {/* Dark red background glow (Fixed at top) */}
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <div
+      class="absolute top-0 left-1/2 w-[600px] h-[600px] bg-accent-red/15 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"
+    >
+    </div>
+  </div>
+
+  {/* Hero Section */}
+  <section class="relative w-full overflow-hidden pt-32 pb-0">
+    
+    {/* Background Vertical Lines */}
+    <div class="absolute inset-0 z-0 flex justify-between w-[95vw] md:w-[90vw] max-w-[1920px] mx-auto pointer-events-none overflow-hidden opacity-40">
+      {[1.2, 3.5, 0.8, 4.1, 2.5].map((delay) => (
+        <div class="relative w-[1px] h-full bg-white/5">
+          <div
+            class="absolute left-[-1px] w-[3px] h-[30vh] bg-gradient-to-b from-transparent via-accent-red to-transparent blur-[2px] light-strip"
+            style={`animation-delay: ${delay}s;`}
+          />
+        </div>
+      ))}
+    </div>
+
+    <div class="relative z-10 w-full min-h-[40vh] md:min-h-[45vh] flex flex-col justify-center items-center text-center px-4 mt-0 md:-mt-4">
+      
+      {/* Badge */}
+      <div class="hero-reveal overflow-hidden mb-6 md:mb-8">
+        <div class="translate-y-full inline-block">
+          <div class="border border-accent-red/20 bg-accent-red/10 backdrop-blur-md px-4 py-1.5 flex items-center justify-center">
+            <h3 class="hover-scramble text-accent-red font-space-mono text-[9px] md:text-[10px] font-bold tracking-[0.25em] uppercase leading-none mt-[2px] cursor-default" data-text="GET IN TOUCH">
+              <span class="scramble-text pointer-events-none">GET IN TOUCH</span>
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Headings */}
+      <div class="flex flex-col items-center justify-center mb-1">
+        <div class="hero-reveal overflow-hidden leading-[0.85] mb-1">
+          <h1 class="text-[10vw] md:text-[75px] lg:text-[90px] tracking-[-0.02em] font-jetbrains-mono font-bold text-[#EFEBE3] translate-y-[120%] inline-block uppercase whitespace-nowrap">
+            LET'S
+          </h1>
+        </div>
+        <div class="hero-reveal overflow-hidden leading-[0.85] mb-1">
+          <h1 class="text-[10vw] md:text-[75px] lg:text-[90px] tracking-[-0.02em] font-jetbrains-mono font-bold text-accent-red translate-y-[120%] inline-block uppercase whitespace-nowrap">
+            TALK
+          </h1>
+        </div>
+      </div>
+
+      {/* Description */}
+      <div class="hero-reveal overflow-hidden mt-6 mb-16 md:mb-24 max-w-xl mx-auto">
+        <p class="font-space-mono text-qwi-text-body text-[12px] md:text-[14px] leading-[1.8] translate-y-full inline-block">
+          Have a project in mind? Let's build something great together. We typically respond within 24 hours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  {/* Contact Form & Info Section */}
+  <section class="w-full relative z-20 pt-12 md:pt-16 pb-24 md:pb-32 bg-[#0a0a0a]" id="contact-content">
+    <div class="w-[90%] md:w-[85%] max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between gap-16 md:gap-24 lg:gap-32 px-2 md:px-8">
+      
+      {/* Left side: Form */}
+      <div class="md:w-3/5 flex flex-col">
+        {/* Heading */}
+        <div class="mb-12">
+          <div class="hero-reveal overflow-hidden leading-[0.85] mb-1">
+            <h2 class="text-[12vw] md:text-[60px] lg:text-[70px] tracking-[-0.02em] font-jetbrains-mono font-bold text-qwi-text-heading translate-y-[120%] inline-block uppercase">
+              SEND
+            </h2>
+          </div>
+          <div class="hero-reveal overflow-hidden leading-[0.85] mb-1">
+            <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] text-[12vw] md:text-[60px] lg:text-[70px] tracking-[-0.02em] font-jetbrains-mono font-bold translate-y-[120%] inline-block uppercase">
+              US A
+            </h2>
+          </div>
+          <div class="hero-reveal overflow-hidden leading-[0.85]">
+            <h2 class="text-transparent [-webkit-text-stroke:1px_var(--color-qwi-text-heading)] text-[12vw] md:text-[60px] lg:text-[70px] tracking-[-0.02em] font-jetbrains-mono font-bold translate-y-[120%] inline-block uppercase">
+              MESSAGE
+            </h2>
+          </div>
+        </div>
+
+        {/* Form fields */}
+        <form class="flex flex-col space-y-6 form-animate opacity-0 translate-y-12">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="flex flex-col w-full">
+              <label class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Name</label>
+              <input type="text" placeholder="Your full name" class="w-full bg-transparent border border-white/10 px-4 py-3 font-space-mono text-[12px] text-white focus:outline-none focus:border-accent-red transition-colors" />
+            </div>
+            <div class="flex flex-col w-full">
+              <label class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Email</label>
+              <input type="email" placeholder="you@company.com" class="w-full bg-transparent border border-white/10 px-4 py-3 font-space-mono text-[12px] text-white focus:outline-none focus:border-accent-red transition-colors" />
+            </div>
+          </div>
+          
+          <div class="flex flex-col">
+            <label class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Phone</label>
+            <input type="text" placeholder="50 317 2447" class="w-full bg-transparent border border-white/10 px-4 py-3 font-space-mono text-[12px] text-white focus:outline-none focus:border-accent-red transition-colors" />
+          </div>
+
+          <div class="flex flex-col">
+            <label class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Company (Optional)</label>
+            <input type="text" placeholder="Company name" class="w-full bg-transparent border border-white/10 px-4 py-3 font-space-mono text-[12px] text-white focus:outline-none focus:border-accent-red transition-colors" />
+          </div>
+
+          <div class="flex flex-col">
+            <label class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Pricing Plan</label>
+            <div class="relative">
+              <select class="w-full bg-transparent border border-white/10 px-4 py-3 font-space-mono text-[12px] text-white appearance-none focus:outline-none focus:border-accent-red transition-colors cursor-pointer">
+                <option value="" disabled selected>Select a plan</option>
+                <option value="basic">Basic Plan</option>
+                <option value="pro">Pro Plan</option>
+                <option value="enterprise">Enterprise Plan</option>
+              </select>
+              <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L9 1" stroke="#EFEBE3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Service Needed</label>
+            <div class="relative">
+              <select class="w-full bg-transparent border border-white/10 px-4 py-3 font-space-mono text-[12px] text-white appearance-none focus:outline-none focus:border-accent-red transition-colors cursor-pointer">
+                <option value="" disabled selected>What can we help with?</option>
+                <option value="web">Web Development</option>
+                <option value="app">Mobile App</option>
+                <option value="ai">AI Integration</option>
+                <option value="other">Other</option>
+              </select>
+              <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1L5 5L9 1" stroke="#EFEBE3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col">
+            <label class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Project Details</label>
+            <textarea rows="4" placeholder="Tell us about your project, goals, and timeline..." class="w-full bg-transparent border border-white/10 px-4 py-3 font-space-mono text-[12px] text-white resize-none focus:outline-none focus:border-accent-red transition-colors"></textarea>
+          </div>
+
+          {/* Simple checkbox simulation for "I'm not a robot" */}
+          <div class="flex items-center p-4 border border-white/10">
+            <input type="checkbox" id="robot" class="w-5 h-5 border border-white/10 bg-transparent rounded-sm accent-accent-red cursor-pointer" />
+            <label for="robot" class="ml-3 font-space-mono text-[12px] text-gray-300 cursor-pointer">I'm not a robot</label>
+          </div>
+
+          <button type="button" class="w-full md:w-auto self-start mt-4 bg-accent-red text-qwi-bg-main font-jetbrains-mono font-bold text-[14px] uppercase tracking-wide px-8 py-4 flex items-center justify-center space-x-2 hover:brightness-110 transition-all duration-300">
+            <span>SEND MESSAGE</span>
+            <ArrowRight size={18} strokeWidth={2} />
+          </button>
+        </form>
+      </div>
+
+      {/* Right side: Info */}
+      <div class="md:w-2/5 flex flex-col mt-12 md:mt-24 space-y-6 md:space-y-8 info-animate opacity-0 translate-y-12">
+        
+        <div class="flex flex-col">
+          <span class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Email</span>
+          <a href="mailto:hello@qwisync.com" class="hover-scramble font-jetbrains-mono font-bold text-[18px] md:text-[20px] text-[#EFEBE3] hover:text-accent-red transition-colors inline-block" data-text="hello@qwisync.com">
+            <span class="scramble-text pointer-events-none">hello@qwisync.com</span>
+          </a>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Phone</span>
+          <a href="tel:+971503172447" class="hover-scramble font-jetbrains-mono font-bold text-[18px] md:text-[20px] text-[#EFEBE3] hover:text-accent-red transition-colors inline-block" data-text="+971 50 3172447">
+            <span class="scramble-text pointer-events-none">+971 50 3172447</span>
+          </a>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Location</span>
+          <span class="font-jetbrains-mono font-bold text-[18px] md:text-[20px] text-[#EFEBE3]">Pak, US</span>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-2">Working Hours</span>
+          <span class="font-jetbrains-mono font-bold text-[18px] md:text-[20px] text-[#EFEBE3]">Sun - Thu, 9 AM - 6 PM GST</span>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-space-mono text-[10px] text-gray-500 uppercase tracking-widest mb-4">Social</span>
+          <div class="flex flex-wrap gap-3">
+            <a href="#" class="hover-scramble border border-white/10 px-4 py-2 font-jetbrains-mono font-bold text-[14px] text-[#EFEBE3] hover:bg-white/5 transition-colors" data-text="Instagram">
+              <span class="scramble-text pointer-events-none">Instagram</span>
+            </a>
+            <a href="#" class="hover-scramble border border-white/10 px-4 py-2 font-jetbrains-mono font-bold text-[14px] text-[#EFEBE3] hover:bg-white/5 transition-colors" data-text="TikTok">
+              <span class="scramble-text pointer-events-none">TikTok</span>
+            </a>
+            <a href="#" class="hover-scramble border border-white/10 px-4 py-2 font-jetbrains-mono font-bold text-[14px] text-[#EFEBE3] hover:bg-white/5 transition-colors" data-text="Dribbble">
+              <span class="scramble-text pointer-events-none">Dribbble</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-8 mt-4 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
+          <div class="flex flex-col">
+            <span class="font-jetbrains-mono font-bold text-[32px] md:text-[40px] text-accent-red mb-1 leading-none">50+</span>
+            <span class="font-space-mono text-[10px] md:text-[12px] text-[#EFEBE3] uppercase tracking-widest mt-2">Projects Delivered</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-jetbrains-mono font-bold text-[32px] md:text-[40px] text-accent-red mb-1 leading-none">24h</span>
+            <span class="font-space-mono text-[10px] md:text-[12px] text-[#EFEBE3] uppercase tracking-widest mt-2">Avg. Response Time</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-jetbrains-mono font-bold text-[32px] md:text-[40px] text-accent-red mb-1 leading-none">98%</span>
+            <span class="font-space-mono text-[10px] md:text-[12px] text-[#EFEBE3] uppercase tracking-widest mt-2">Client Satisfaction</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* Vertical Light Strips */
+  .light-strip {
+    animation: strip-light 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    top: -40vh;
+  }
+  @keyframes strip-light {
+    0% {
+      top: -40vh;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      top: 120vh;
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+  
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero Text Reveal Sequence (Includes SEND US A MESSAGE)
+  const heroReveals = document.querySelectorAll(".hero-reveal > *");
+  if (heroReveals.length > 0) {
+    gsap.to(heroReveals, {
+      y: 0,
+      duration: 1.2,
+      stagger: 0.1,
+      ease: "power4.out",
+      delay: 0.2,
+    });
+  }
+
+  // Scroll Animations for Form and Info
+  const formElement = document.querySelector(".form-animate");
+  if (formElement) {
+    gsap.to(formElement, {
+      scrollTrigger: {
+        trigger: "#contact-content",
+        start: "top 75%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+  }
+
+  const infoElement = document.querySelector(".info-animate");
+  if (infoElement) {
+    gsap.to(infoElement, {
+      scrollTrigger: {
+        trigger: "#contact-content",
+        start: "top 75%",
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 0.2,
+      ease: "power3.out"
+    });
+  }
+</script>

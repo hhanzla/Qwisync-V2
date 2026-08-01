@@ -148,13 +148,22 @@ import { Globe, Plus } from "lucide-react";
   // @ts-nocheck
   import gsap from "gsap";
   // GSAP Entrance Animation
-  gsap.to("#v2-header", {
-    y: 0,
-    opacity: 1,
-    duration: 1.2,
-    ease: "power3.out",
-    delay: 0.2,
-  });
+  function initHeader() {
+    gsap.to("#v2-header", {
+      y: 0,
+      opacity: 1,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.1, // Reduced delay
+    });
+  }
+
+  // Check if preloader exists
+  if (document.getElementById('preloader')) {
+    window.addEventListener('preloaderComplete', initHeader);
+  } else {
+    setTimeout(initHeader, 200);
+  }
 
   // Mobile Menu Logic
   const mobileToggle = document.getElementById("mobile-menu-toggle");
