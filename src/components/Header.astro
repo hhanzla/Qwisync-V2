@@ -43,23 +43,31 @@ import { Globe, Plus } from "lucide-react";
 
     {/* Right Actions */}
     <div class="hidden lg:flex items-center space-x-4">
-      {/* Language Toggle */}
+      {/* Region Toggle */}
       <div
-        class="flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[9px] uppercase"
+        class="flex items-stretch border border-white/10 font-space-mono font-bold tracking-widest text-[9px] uppercase h-[38px]"
       >
         <a
           href="#"
-          class="px-4 py-2.5 text-gray-500 hover:text-white hover:bg-white/5 transition-colors"
-          >URDU</a
+          class="px-4 opacity-50 hover:opacity-100 hover:bg-white/5 transition-all flex items-center justify-center"
+          title="Pakistan"
         >
-        <div class="w-[1px] h-4 bg-white/10"></div>
-        <a href="#" class="px-4 py-2.5 text-accent-red bg-white/5">ENG</a>
+          <img src="https://flagcdn.com/pk.svg" alt="PK" class="w-6 h-4 object-cover" />
+        </a>
+        <div class="w-[1px] h-full bg-white/10"></div>
+        <a 
+          href="#" 
+          class="px-4 bg-white/5 flex items-center justify-center"
+          title="United States"
+        >
+          <img src="https://flagcdn.com/us.svg" alt="US" class="w-6 h-4 object-cover" />
+        </a>
       </div>
 
       {/* CTA Button */}
       <a
         href="/contact"
-        class="hover-scramble flex items-center space-x-2.5 px-6 py-2.5 bg-qwi-bg-card border border-white/10 font-space-mono font-bold tracking-[0.15em] text-[10px] text-white hover:bg-white/10 hover:text-accent-red transition-colors group"
+        class="hover-scramble flex items-center justify-center h-[38px] space-x-2.5 px-6 bg-qwi-bg-card border border-white/10 font-space-mono font-bold tracking-[0.15em] text-[10px] text-white hover:bg-white/10 hover:text-accent-red transition-colors group"
         data-text="GET CONSULTATION"
       >
         <div
@@ -114,17 +122,25 @@ import { Globe, Plus } from "lucide-react";
   </nav>
 
   <div class="mt-16 flex flex-col items-center space-y-4">
-    {/* Language Toggle */}
+    {/* Region Toggle */}
     <div
-      class="mobile-anim-item opacity-0 flex items-center border border-white/10 font-space-mono font-bold tracking-widest text-[10px] uppercase"
+      class="mobile-anim-item opacity-0 flex items-stretch border border-white/10 font-space-mono font-bold tracking-widest text-[10px] uppercase h-[38px]"
     >
       <a
         href="#"
-        class="px-4 py-2 text-gray-500 hover:text-white hover:bg-white/5 transition-colors"
-        >URDU</a
+        class="px-6 opacity-50 hover:opacity-100 hover:bg-white/5 transition-all flex items-center justify-center"
+        title="Pakistan"
       >
-      <div class="w-[1px] h-4 bg-white/10"></div>
-      <a href="#" class="px-4 py-2 text-accent-red bg-white/5">ENG</a>
+        <img src="https://flagcdn.com/pk.svg" alt="PK" class="w-6 h-4 object-cover" />
+      </a>
+      <div class="w-[1px] h-full bg-white/10"></div>
+      <a 
+        href="#" 
+        class="px-6 bg-white/5 flex items-center justify-center"
+        title="United States"
+      >
+        <img src="https://flagcdn.com/us.svg" alt="US" class="w-6 h-4 object-cover" />
+      </a>
     </div>
 
     {/* Email */}
